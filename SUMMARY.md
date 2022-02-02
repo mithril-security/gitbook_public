@@ -1,9 +1,7 @@
 # Summary
 
-* [SGX-ES-PDMS](README.md)
+* [BLINDAU](README.md)
 * [Concepts](concepts.md)
-    * [Data Computation](dt_workflow.md)
-    * [Data Collection](dc_workflow.md)
 * [Status and features](status.md)
 * [Setup](setup.md)
     * [Dependencies](dependencies.md)
@@ -12,4 +10,4 @@
 * [Examples](examples.md)
 * [References and contributors](references.md)
 * [Links](links.md)
-* [Code Repository](https://gitlab.inria.fr/petrus/es-pdms)
+* [Code Repository](https://github.com/mithril-security)
