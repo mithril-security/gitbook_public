@@ -1,6 +1,6 @@
 # Summary
 
-* [BLINDAU](README.md)
+* [BLINDAI](README.md)
 * [Concepts](concepts.md)
 * [Status and features](status.md)
 * [Setup](setup.md)
