@@ -1,7 +1,7 @@
 # Summary
 
 * [BLINDAI](README.md)
-* [What is Mithril Security](mithril.md)
+* [What is Mithril Security ?](mithril.md)
     * [Overview](overview.md)
     * [Philosophy](philosophy.md)
     * [Features](features.md)
