@@ -1,6 +1,6 @@
 # Cloud deployment
 
-TODO : intro on Azure DCsvX machines (specifications, most efficient etc...)
+TODO : intro on Azure DCsvX VM (specifications, most efficient etc...)
 
 ## How to deploy on Azure DCSv2
 

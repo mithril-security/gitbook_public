@@ -1,9 +1,11 @@
 # Features
 
-ML and secure features more explicit -> size of model, encryption supported etc...)
+TODO : add more ML/secure features
 
-* Simple and fast API to use the service
-* Model and data protected by hardware securities
-* Support of Remote Attestation with TLS (DCAP library)
-* Easy to install, deploy, and maintain
-* Support ```SGX+FLC```
+* python client / rust server
+* privacy-preserving architecture (TODO : too much ?)
+* neural networks encryption at rest 
+* remote attestation with TLS (```DCAP``` library)
+* ```SGX + FLC``` support
+* AES encryption (TODO : to check)
+* scalable API using gRPC

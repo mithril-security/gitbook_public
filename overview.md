@@ -1,5 +1,5 @@
 # Overview
 
-TODO : redundant with previous part
-
-Our solution, **BlindAI** is a fast and secured inference server, allowing you to use your model with secure garanties provided by TEE that your model and its data will stay secured.
+Our solution, **BlindAI** provided an privacy-preversing SDK allowing data scientits to perform secure inference.
+The simple use of a python client allow to isolates ML model in a CPU protected enclave.
+Our secure server is implemented in Rust, allowing an enforced memory safety, and deployable on Azure DSC VM.
