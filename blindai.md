@@ -1,5 +1,8 @@
-# BlindAI architecture
+# BlindAI
 
-TODO : main components, encryption etc..
+TODO : diagram archi, workflow
+
+* [Architecture](archi.md)
+* [features](features.md)
 
 
