@@ -1,4 +1,6 @@
-# Features (TODO : ML and secure features more explicit -> size of model, encryption supported etc...)
+# Features
+
+ML and secure features more explicit -> size of model, encryption supported etc...)
 
 * Simple and fast API to use the service
 * Model and data protected by hardware securities

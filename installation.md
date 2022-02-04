@@ -1,5 +1,7 @@
 # Installation
 
+TODO : simulation and hardware mode redundant command
+
 ## Software/Simulation-mode server (Docker) 🐳
 This version of the server will allow you to test the service without having an ```Intel SGX``` ready device.
 In order to run the server in ```software/simulation mode```, you can simply run this command:
