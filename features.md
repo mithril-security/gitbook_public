@@ -1,7 +1,6 @@
 # Features
 
-TODO : - add more ML/secure features
-       - more high level (check marblerun website)
+TODO : - add more ML/secure features - more high level (check marblerun website)
 
 - privacy-preserving architecture (TODO : too much ?)
 - neural networks encryption at rest 
