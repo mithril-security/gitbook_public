@@ -1,10 +1,10 @@
 # Summary
 
-* [BLINDAI](README.md)
 * [What is Mithril Security ?](mithril.md)
     * [Overview](overview.md)
     * [Philosophy](philosophy.md)
     * [Features](features.md)
+* [BlindAI](blindai.md)
 * [Get started](started.md)
     * [Installation](installation.md)
     * [Quick Start](quick_start.md)
@@ -14,7 +14,7 @@
     * [Data protection](data_protection.md)
     * [Remote Attestation with TLS](ra.md)
     * [Build Configurations](build_config.md)
-* [BlindAI architecture] (archi.md)
+* [BlindAI architecture](archi.md)
 * [Examples](examples.md)
     * [Speech to text](speech.md)
     * [Image analysis](images.md)
