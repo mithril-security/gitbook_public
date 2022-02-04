@@ -14,7 +14,6 @@
     * [Data protection](data_protection.md)
     * [Remote Attestation with TLS](ra.md)
     * [Build Configurations](build_config.md)
-* [BlindAI architecture](archi.md)
 * [Examples](examples.md)
     * [Speech to text](speech.md)
     * [Image analysis](images.md)
