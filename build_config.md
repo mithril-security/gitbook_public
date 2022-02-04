@@ -1,8 +1,6 @@
-# Simulation / Hardware mode
+## Intel SGX build configurations
 
 TODO : copied from intel -> to simplify
-
-## Intel SGX build configurations
 
 There are typically two types of build configurations that a non-Intel SGX SW project defines:
 Debug and Release. These configurations are both supported for Intel SGX enclaves.
