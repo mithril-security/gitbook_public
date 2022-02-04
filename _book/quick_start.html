@@ -160,9 +160,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="started.html">
+        <li class="chapter " data-level="1.3" data-path="started.md">
             
-                <a href="started.html">
+                <span>
             
                     
                     Get started
@@ -450,7 +450,59 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="quick-start">Quick Start</h1>
+                                <h1 id="get-started">Get started</h1>
+<h2 id="using-the-client">Using the client</h2>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> blindai.client <span class="hljs-keyword">import</span> BlindAiClient
+<span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment">#Create the connection</span>
+client = BlindAiClient()
+
+client.connect_server(
+    <span class="hljs-string">&quot;localhost&quot;</span>,
+    policy=<span class="hljs-string">&quot;policy.toml&quot;</span>,
+    certificate=<span class="hljs-string">&quot;host_server.pem&quot;</span>,
+    simulation=<span class="hljs-keyword">False</span>
+)
+
+<span class="hljs-comment">#Upload the model to the server</span>
+response = client.upload_model(model=<span class="hljs-string">&quot;./mobilenetv2-7.onnx&quot;</span>, shape=(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">224</span>, <span class="hljs-number">224</span>))
+
+<span class="hljs-keyword">if</span> response.ok:
+    print(<span class="hljs-string">&quot;Model loaded&quot;</span>)
+    image = Image.open(<span class="hljs-string">&quot;grace_hopper.jpg&quot;</span>).resize((<span class="hljs-number">224</span>,<span class="hljs-number">224</span>))
+
+    <span class="hljs-comment">#Preprocess the data </span>
+    a = np.asarray(image, dtype=float)
+    mean =np.array([<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>])
+    std = np.array([<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>])
+    a = (a / <span class="hljs-number">255.0</span> - mean) / std
+    a = np.moveaxis(a, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>)
+
+    <span class="hljs-comment">#Send data for inference</span>
+    result = client.send_data(a.flatten())
+
+client.close_connection()
+</code></pre>
+<p>In order to connect to the BlindAI server, the client needs to acquire the following files from the server: </p>
+<ul>
+<li><p><strong>policy.toml :</strong> the enclave security policy that defines which enclave is trusted.</p>
+</li>
+<li><p><strong>host_server.pem :</strong> TLS certificate for the connection to the untrusted (app) part of the server.</p>
+</li>
+</ul>
+<p><strong>Simulation mode</strong> enables to pypass the process of requesting and checking the attestation.</p>
+<p>Usage examples can be found in <a href="tutorial">tutorial</a> folder.</p>
+<p>Before you run an example, make sure to get <code>policy.toml</code> and <code>host_server.pem</code> that are generated in the server side. </p>
+<h2 id="using-the-server">Using the server</h2>
+<p>Once the server is up and running, you can start using <a href="https://github.com/mithril-security/mithril-inference-client/tree/build_with_cmake#usgage" target="_blank">the client</a> to start using the server.</p>
+<p>The server has two entrypoints :</p>
+<ul>
+<li>SendModel: accept an <code>ONNX</code> model file as input <code>([u8])</code>. Will return a <code>SimpleReply</code> object, containing a <code>bool</code> indicating if the loading was a success, and a <code>string</code> with an error message in case of problem.</li>
+<li>SendData: accept an array of <code>f32</code> as input. Will return the classification and prediction, plus a <code>SimpleReply</code> object.</li>
+</ul>
+<h2 id="an-example-on-resnet18-todo">An example on Resnet18 (TODO)</h2>
 
                                 
                                 </section>
@@ -494,7 +546,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Quick Start","level":"1.3.2","depth":2,"next":{"title":"Core concepts","level":"1.4","depth":1,"path":"core_concepts.md","ref":"core_concepts.md","articles":[{"title":"TEE","level":"1.4.1","depth":2,"path":"tee.md","ref":"tee.md","articles":[]},{"title":"Simulation / Hardware mode","level":"1.4.2","depth":2,"path":"modes.md","ref":"modes.md","articles":[]},{"title":"Attestation","level":"1.4.3","depth":2,"path":"attestation.md","ref":"attestation.md","articles":[]},{"title":"Data protection","level":"1.4.4","depth":2,"path":"data_protection.md","ref":"data_protection.md","articles":[]},{"title":"Remote Attestation with TLS","level":"1.4.5","depth":2,"path":"ra.md","ref":"ra.md","articles":[]}]},"previous":{"title":"Installation","level":"1.3.1","depth":2,"path":"installation.md","ref":"installation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"quick_start.md","mtime":"2022-02-03T13:53:32.481Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-04T10:04:23.704Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Quick Start","level":"1.3.2","depth":2,"next":{"title":"Core concepts","level":"1.4","depth":1,"path":"core_concepts.md","ref":"core_concepts.md","articles":[{"title":"TEE","level":"1.4.1","depth":2,"path":"tee.md","ref":"tee.md","articles":[]},{"title":"Simulation / Hardware mode","level":"1.4.2","depth":2,"path":"modes.md","ref":"modes.md","articles":[]},{"title":"Attestation","level":"1.4.3","depth":2,"path":"attestation.md","ref":"attestation.md","articles":[]},{"title":"Data protection","level":"1.4.4","depth":2,"path":"data_protection.md","ref":"data_protection.md","articles":[]},{"title":"Remote Attestation with TLS","level":"1.4.5","depth":2,"path":"ra.md","ref":"ra.md","articles":[]}]},"previous":{"title":"Installation","level":"1.3.1","depth":2,"path":"installation.md","ref":"installation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"quick_start.md","mtime":"2022-02-04T10:43:40.627Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-04T10:44:17.655Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
