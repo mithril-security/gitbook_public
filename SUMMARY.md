@@ -8,7 +8,7 @@
 * [Get started](started.md)
     * [Installation](installation.md)
     * [Quick Start](quick_start.md)
-* [Introduction to Intel SGX](intel_sgx.md)
+* [Introduction to Intel SGX](intro_sgx.md)
     * [TEE](tee.md)
     * [Attestation](attestation.md)
     * [Data protection](data_protection.md)
