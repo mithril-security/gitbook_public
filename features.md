@@ -1,8 +1,8 @@
 # Features
 
-TODO : add more ML/secure features
+TODO : - add more ML/secure features
+       - more high level (check marblerun website)
 
-- python client / rust server
 - privacy-preserving architecture (TODO : too much ?)
 - neural networks encryption at rest 
 - remote attestation with TLS (```DCAP``` library)
