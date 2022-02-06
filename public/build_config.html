@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Quick Start · GitBook</title>
+        <title>Build Configurations · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="intro_sgx.html" />
+    <link rel="next" href="examples.html" />
     
     
-    <link rel="prev" href="client_side.html" />
+    <link rel="prev" href="ra.html" />
     
 
     </head>
@@ -251,7 +251,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="quick_start.html">
+        <li class="chapter " data-level="1.3.2" data-path="quick_start.html">
             
                 <a href="quick_start.html">
             
@@ -335,7 +335,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="build_config.html">
+        <li class="chapter active" data-level="1.4.5" data-path="build_config.html">
             
                 <a href="build_config.html">
             
@@ -499,7 +499,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Quick Start</a>
+        <a href="." >Build Configurations</a>
     </h1>
 </div>
 
@@ -514,59 +514,20 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="get-started">Get started</h1>
-<h2 id="using-the-client">Using the client</h2>
-<pre><code class="lang-python"><span class="hljs-keyword">from</span> blindai.client <span class="hljs-keyword">import</span> BlindAiClient
-<span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
-<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
-
-<span class="hljs-comment">#Create the connection</span>
-client = BlindAiClient()
-
-client.connect_server(
-    <span class="hljs-string">&quot;localhost&quot;</span>,
-    policy=<span class="hljs-string">&quot;policy.toml&quot;</span>,
-    certificate=<span class="hljs-string">&quot;host_server.pem&quot;</span>,
-    simulation=<span class="hljs-keyword">False</span>
-)
-
-<span class="hljs-comment">#Upload the model to the server</span>
-response = client.upload_model(model=<span class="hljs-string">&quot;./mobilenetv2-7.onnx&quot;</span>, shape=(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">224</span>, <span class="hljs-number">224</span>))
-
-<span class="hljs-keyword">if</span> response.ok:
-    print(<span class="hljs-string">&quot;Model loaded&quot;</span>)
-    image = Image.open(<span class="hljs-string">&quot;grace_hopper.jpg&quot;</span>).resize((<span class="hljs-number">224</span>,<span class="hljs-number">224</span>))
-
-    <span class="hljs-comment">#Preprocess the data </span>
-    a = np.asarray(image, dtype=float)
-    mean =np.array([<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>])
-    std = np.array([<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>])
-    a = (a / <span class="hljs-number">255.0</span> - mean) / std
-    a = np.moveaxis(a, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>)
-
-    <span class="hljs-comment">#Send data for inference</span>
-    result = client.send_data(a.flatten())
-
-client.close_connection()
-</code></pre>
-<p>In order to connect to the BlindAI server, the client needs to acquire the following files from the server: </p>
-<ul>
-<li><p><strong>policy.toml :</strong> the enclave security policy that defines which enclave is trusted.</p>
-</li>
-<li><p><strong>host_server.pem :</strong> TLS certificate for the connection to the untrusted (app) part of the server.</p>
-</li>
-</ul>
-<p><strong>Simulation mode</strong> enables to pypass the process of requesting and checking the attestation.</p>
-<p>Usage examples can be found in <a href="tutorial">tutorial</a> folder.</p>
-<p>Before you run an example, make sure to get <code>policy.toml</code> and <code>host_server.pem</code> that are generated in the server side. </p>
-<h2 id="using-the-server">Using the server</h2>
-<p>Once the server is up and running, you can start using <a href="https://github.com/mithril-security/mithril-inference-client/tree/build_with_cmake#usgage" target="_blank">the client</a> to start using the server.</p>
-<p>The server has two entrypoints :</p>
-<ul>
-<li>SendModel: accept an <code>ONNX</code> model file as input <code>([u8])</code>. Will return a <code>SimpleReply</code> object, containing a <code>bool</code> indicating if the loading was a success, and a <code>string</code> with an error message in case of problem.</li>
-<li>SendData: accept an array of <code>f32</code> as input. Will return the classification and prediction, plus a <code>SimpleReply</code> object.</li>
-</ul>
-<h2 id="an-example-on-resnet18-todo">An example on Resnet18 (TODO)</h2>
+                                <h2 id="intel-sgx-build-configurations">Intel SGX build configurations</h2>
+<p>TODO : copied from intel -&gt; to simplify</p>
+<p>There are typically two types of build configurations that a non-Intel SGX SW project defines:
+Debug and Release. These configurations are both supported for Intel SGX enclaves.
+Developers may also want to experiment with a non-production enclave built with release
+compilation and linking flags, on a real hardware SGX-enabled platform. This would be an
+enclave built exactly as a production enclave, except for the signing process, which would be
+Single-step. To support the generation of this kind of enclave, Intel SGX supports a hardware
+non-debug build configuration known as Prerelease.
+In addition, Intel SGX-enabled projects must support building and testing Intel SGX-enabled
+applications on non-Intel SGX platforms (or an emulator) using simulation libraries. This need is
+supported by a Simulation mode. Simulation mode can be thought of as an overlay that can be
+used with either Debug, Release, or Pre-Release enclaves. In actual practice, however, it is most
+often used with Debug enclaves.</p>
 
                                 
                                 </section>
@@ -594,12 +555,12 @@ client.close_connection()
 
             
                 
-                <a href="client_side.html" class="navigation navigation-prev " aria-label="Previous page: Client side">
+                <a href="ra.html" class="navigation navigation-prev " aria-label="Previous page: Remote Attestation with TLS">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="intro_sgx.html" class="navigation navigation-next " aria-label="Next page: Introduction to Intel SGX">
+                <a href="examples.html" class="navigation navigation-next " aria-label="Next page: Examples">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -610,7 +571,7 @@ client.close_connection()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Quick Start","level":"1.3.2","depth":2,"next":{"title":"Introduction to Intel SGX","level":"1.4","depth":1,"path":"intro_sgx.md","ref":"intro_sgx.md","articles":[{"title":"TEE","level":"1.4.1","depth":2,"path":"tee.md","ref":"tee.md","articles":[]},{"title":"Attestation","level":"1.4.2","depth":2,"path":"attestation.md","ref":"attestation.md","articles":[]},{"title":"Data protection","level":"1.4.3","depth":2,"path":"data_protection.md","ref":"data_protection.md","articles":[]},{"title":"Remote Attestation with TLS","level":"1.4.4","depth":2,"path":"ra.md","ref":"ra.md","articles":[]},{"title":"Build Configurations","level":"1.4.5","depth":2,"path":"build_config.md","ref":"build_config.md","articles":[]}]},"previous":{"title":"Client side","level":"1.3.1.3","depth":3,"path":"client_side.md","ref":"client_side.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"quick_start.md","mtime":"2022-02-04T14:04:32.013Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-06T15:49:52.963Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Build Configurations","level":"1.4.5","depth":2,"next":{"title":"Examples","level":"1.5","depth":1,"path":"examples.md","ref":"examples.md","articles":[{"title":"Speech to text","level":"1.5.1","depth":2,"path":"speech.md","ref":"speech.md","articles":[]},{"title":"Image analysis","level":"1.5.2","depth":2,"path":"images.md","ref":"images.md","articles":[]}]},"previous":{"title":"Remote Attestation with TLS","level":"1.4.4","depth":2,"path":"ra.md","ref":"ra.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"build_config.md","mtime":"2022-02-04T14:04:32.003Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-06T15:49:52.963Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

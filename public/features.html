@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Quick Start · GitBook</title>
+        <title>Features · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="intro_sgx.html" />
+    <link rel="next" href="started.html" />
     
     
-    <link rel="prev" href="client_side.html" />
+    <link rel="prev" href="archi.md" />
     
 
     </head>
@@ -161,7 +161,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="features.html">
+        <li class="chapter active" data-level="1.2.2" data-path="features.html">
             
                 <a href="features.html">
             
@@ -251,7 +251,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.2" data-path="quick_start.html">
+        <li class="chapter " data-level="1.3.2" data-path="quick_start.html">
             
                 <a href="quick_start.html">
             
@@ -499,7 +499,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Quick Start</a>
+        <a href="." >Features</a>
     </h1>
 </div>
 
@@ -514,59 +514,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="get-started">Get started</h1>
-<h2 id="using-the-client">Using the client</h2>
-<pre><code class="lang-python"><span class="hljs-keyword">from</span> blindai.client <span class="hljs-keyword">import</span> BlindAiClient
-<span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
-<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
-
-<span class="hljs-comment">#Create the connection</span>
-client = BlindAiClient()
-
-client.connect_server(
-    <span class="hljs-string">&quot;localhost&quot;</span>,
-    policy=<span class="hljs-string">&quot;policy.toml&quot;</span>,
-    certificate=<span class="hljs-string">&quot;host_server.pem&quot;</span>,
-    simulation=<span class="hljs-keyword">False</span>
-)
-
-<span class="hljs-comment">#Upload the model to the server</span>
-response = client.upload_model(model=<span class="hljs-string">&quot;./mobilenetv2-7.onnx&quot;</span>, shape=(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">224</span>, <span class="hljs-number">224</span>))
-
-<span class="hljs-keyword">if</span> response.ok:
-    print(<span class="hljs-string">&quot;Model loaded&quot;</span>)
-    image = Image.open(<span class="hljs-string">&quot;grace_hopper.jpg&quot;</span>).resize((<span class="hljs-number">224</span>,<span class="hljs-number">224</span>))
-
-    <span class="hljs-comment">#Preprocess the data </span>
-    a = np.asarray(image, dtype=float)
-    mean =np.array([<span class="hljs-number">0.485</span>, <span class="hljs-number">0.456</span>, <span class="hljs-number">0.406</span>])
-    std = np.array([<span class="hljs-number">0.229</span>, <span class="hljs-number">0.224</span>, <span class="hljs-number">0.225</span>])
-    a = (a / <span class="hljs-number">255.0</span> - mean) / std
-    a = np.moveaxis(a, <span class="hljs-number">2</span>, <span class="hljs-number">0</span>)
-
-    <span class="hljs-comment">#Send data for inference</span>
-    result = client.send_data(a.flatten())
-
-client.close_connection()
-</code></pre>
-<p>In order to connect to the BlindAI server, the client needs to acquire the following files from the server: </p>
+                                <h1 id="features">Features</h1>
+<p>TODO : - add more ML/secure features - more high level (check marblerun website)</p>
 <ul>
-<li><p><strong>policy.toml :</strong> the enclave security policy that defines which enclave is trusted.</p>
-</li>
-<li><p><strong>host_server.pem :</strong> TLS certificate for the connection to the untrusted (app) part of the server.</p>
-</li>
+<li>privacy-preserving architecture (TODO : too much ?)</li>
+<li>neural networks encryption at rest </li>
+<li>remote attestation with TLS (<code>DCAP</code> library)</li>
+<li><code>SGX + FLC</code> support</li>
+<li>AES encryption (TODO : to check)</li>
+<li>scalable API using gRPC</li>
 </ul>
-<p><strong>Simulation mode</strong> enables to pypass the process of requesting and checking the attestation.</p>
-<p>Usage examples can be found in <a href="tutorial">tutorial</a> folder.</p>
-<p>Before you run an example, make sure to get <code>policy.toml</code> and <code>host_server.pem</code> that are generated in the server side. </p>
-<h2 id="using-the-server">Using the server</h2>
-<p>Once the server is up and running, you can start using <a href="https://github.com/mithril-security/mithril-inference-client/tree/build_with_cmake#usgage" target="_blank">the client</a> to start using the server.</p>
-<p>The server has two entrypoints :</p>
-<ul>
-<li>SendModel: accept an <code>ONNX</code> model file as input <code>([u8])</code>. Will return a <code>SimpleReply</code> object, containing a <code>bool</code> indicating if the loading was a success, and a <code>string</code> with an error message in case of problem.</li>
-<li>SendData: accept an array of <code>f32</code> as input. Will return the classification and prediction, plus a <code>SimpleReply</code> object.</li>
-</ul>
-<h2 id="an-example-on-resnet18-todo">An example on Resnet18 (TODO)</h2>
 
                                 
                                 </section>
@@ -594,12 +551,12 @@ client.close_connection()
 
             
                 
-                <a href="client_side.html" class="navigation navigation-prev " aria-label="Previous page: Client side">
+                <a href="archi.md" class="navigation navigation-prev " aria-label="Previous page: Architecture">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="intro_sgx.html" class="navigation navigation-next " aria-label="Next page: Introduction to Intel SGX">
+                <a href="started.html" class="navigation navigation-next " aria-label="Next page: Get started">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -610,7 +567,7 @@ client.close_connection()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Quick Start","level":"1.3.2","depth":2,"next":{"title":"Introduction to Intel SGX","level":"1.4","depth":1,"path":"intro_sgx.md","ref":"intro_sgx.md","articles":[{"title":"TEE","level":"1.4.1","depth":2,"path":"tee.md","ref":"tee.md","articles":[]},{"title":"Attestation","level":"1.4.2","depth":2,"path":"attestation.md","ref":"attestation.md","articles":[]},{"title":"Data protection","level":"1.4.3","depth":2,"path":"data_protection.md","ref":"data_protection.md","articles":[]},{"title":"Remote Attestation with TLS","level":"1.4.4","depth":2,"path":"ra.md","ref":"ra.md","articles":[]},{"title":"Build Configurations","level":"1.4.5","depth":2,"path":"build_config.md","ref":"build_config.md","articles":[]}]},"previous":{"title":"Client side","level":"1.3.1.3","depth":3,"path":"client_side.md","ref":"client_side.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"quick_start.md","mtime":"2022-02-04T14:04:32.013Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-06T15:49:52.963Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Features","level":"1.2.2","depth":2,"next":{"title":"Get started","level":"1.3","depth":1,"path":"started.md","ref":"started.md","articles":[{"title":"Installation","level":"1.3.1","depth":2,"path":"installation.md","ref":"installation.md","articles":[{"title":"Simulation server","level":"1.3.1.1","depth":3,"path":"simulation_server.md","ref":"simulation_server.md","articles":[]},{"title":"Hardware server","level":"1.3.1.2","depth":3,"path":"hardware_server.md","ref":"hardware_server.md","articles":[]},{"title":"Client side","level":"1.3.1.3","depth":3,"path":"client_side.md","ref":"client_side.md","articles":[]}]},{"title":"Quick Start","level":"1.3.2","depth":2,"path":"quick_start.md","ref":"quick_start.md","articles":[]}]},"previous":{"title":"Architecture","level":"1.2.1","depth":2,"path":"archi.md","ref":"archi.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"features.md","mtime":"2022-02-06T15:39:20.819Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-06T15:49:52.963Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
