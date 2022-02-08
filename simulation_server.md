@@ -4,7 +4,7 @@
 This ```Docker``` image provides a version of the server that allows you to test the service without having an ```Intel SGX``` ready device. 
 In order to run the server in ```software/simulation mode```, you can simply run this command: 
 ```bash
-curl -L ... | sh
+sudo docker run -p 50051:50051 -p 50052:50052 blindai-server-sim:0.1.0
 ```
 
 ### Compile the server and run it from source
@@ -29,3 +29,5 @@ make SGX_MODE=SW
 Two files will be generated after the building process:
 - **policy.toml :** the enclave security policy that defines which enclave is trusted.
 - **host_server.pem :** TLS certificate for the connection to the untrusted (app) part of the server.
+
+**Those two files are needed by the client to establish a connection with the server.**
