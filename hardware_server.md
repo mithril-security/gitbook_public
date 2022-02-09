@@ -38,6 +38,5 @@ Two files will be generated after the building process:
 
 If you wish, you can also build yourself the ```Docker``` image with the following commands: 
 ```bash
-cd server
 docker build . -f docker/hardware/hardware-ubuntu-1804.dockerfile -t blindai-server:0.1.0
 ```
