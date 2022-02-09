@@ -35,3 +35,9 @@ Two files will be generated after the building process:
 - **host_server.pem :** TLS certificate for the connection to the untrusted (app) part of the server.
 
 **Those two files are needed by the client to establish a connection with the server.**
+
+If you wish, you can also build yourself the ```Docker``` image with the following commands: 
+```bash
+cd server
+docker build . -f docker/hardware/hardware-ubuntu-1804.dockerfile -t blindai-server:0.1.0
+```
