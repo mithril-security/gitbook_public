@@ -4,7 +4,7 @@
 You will need to have an Intel SGX ready device (with ```SGX+FLC``` support) in order to run this ```Docker``` image.
 Please make sure to have the ```SGX+FLC``` drivers (preferably with the version 1.41) installed on your system before running the ```Docker``` image. [Please check this link to have more information about the drivers.](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
 ```bash
-sudo docker run -p 50051:50051 -p 50052:50052 --device /dev/sgx/enclave --device /dev/sgx/provision blindai-server:0.1.0 API_KEY
+docker run -p 50051:50051 -p 50052:50052 --device /dev/sgx/enclave --device /dev/sgx/provision blindai-server:0.1.0 API_KEY
 ```
 
 A [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) server is built-in inside the Docker Image in order to generate the DCAP attestation from the enclave. You need to provide an API Key in order for the PCCS server to function. [You can get an API Key here.](https://api.portal.trustedservices.intel.com/provisioning-certification)
