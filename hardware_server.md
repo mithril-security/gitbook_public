@@ -9,15 +9,6 @@ docker run -p 50051:50051 -p 50052:50052 --device /dev/sgx/enclave --device /dev
 
 A [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) is built-in inside the Docker Image in order to generate the DCAP attestation from the enclave. You need to provide an API Key in order for the PCCS server to function. [You can get an API Key here.](https://api.portal.trustedservices.intel.com/provisioning-certification)
 
-### Compile the server and run it from source
-
-In order to compile the server, you need to have the following installed on your system:
-* Rust toolchain ```nightly-2021-11-01```
-* Cargo & Xargo
-* Intel SGX SDK 2.15.100 + PSW
-
-**You need as well to have a** [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) **installed on your machine in order to execute** ```BlindAI``` in hardware mode.
-
 **NOTE**: There is a way to install the SGX+FLC drivers quickly without building them. All you need to do is to follow those commands:
 ```bash
 wget https://download.01.org/intel-sgx/sgx-linux/2.15.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.41.bin
@@ -26,6 +17,14 @@ chmod +x sgx_linux_x64_driver_1.41.bin
 ```
 The binary file contains the drivers signed by Intel, and will proceed to the installation transparently.
 
+### Compile the server and run it from source
+
+In order to compile the server, you need to have the following installed on your system:
+* Rust toolchain ```nightly-2021-11-01```
+* Cargo & Xargo
+* Intel SGX SDK 2.15.100 + PSW
+
+**You need as well to have a** [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) **installed on your machine in order to execute** ```BlindAI``` in hardware mode.
 
 You can get a Docker image having the Intel SGX SDK pre-installed [here](https://github.com/apache/incubator-teaclave-sgx-sdk#pulling-a-pre-built-docker-container). You will still need to install Xargo with the following command: 
 ```bash
