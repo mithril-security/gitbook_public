@@ -18,6 +18,15 @@ In order to compile the server, you need to have the following installed on your
 
 **You need as well to have a** [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) **installed on your machine in order to execute** ```BlindAI``` in hardware mode.
 
+**NOTE**: There is a way to install the SGX+FLC drivers quickly without building them. All you need to do is to follow those commands:
+```bash
+wget https://download.01.org/intel-sgx/sgx-linux/2.15.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.41.bin
+chmod +x sgx_linux_x64_driver_1.41.bin
+./sgx_linux_x64_driver_1.41.bin
+```
+The binary file contains the drivers signed by Intel, and will proceed to the installation transparently.
+
+
 You can get a Docker image having the Intel SGX SDK pre-installed [here](https://github.com/apache/incubator-teaclave-sgx-sdk#pulling-a-pre-built-docker-container). You will still need to install Xargo with the following command: 
 ```bash
 cargo install xargo
