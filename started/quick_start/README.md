@@ -15,7 +15,7 @@ from transformers import DistilBertForSequenceClassification
 model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased")
 ```
 
-For simplicty, we will take a pre-trained DistilBERT without finetuning it, as the purpose is to show how to deploy a model with confidentiality. In future articles we will show examples that go from training to deployment.
+For simplicty, we will take a pre-trained DistilBERT without finetuning it, as the purpose is to show how to deploy a model with confidentiality.
 
 ### Step 2: Export it in ONNX format
 
