@@ -1,13 +1,12 @@
 # Installation - Server side - Hardware
 
-### Docker image of the server 🐳
-You will need to have an Intel SGX ready device (with ```SGX+FLC``` support) in order to run this ```Docker``` image.
-Please make sure to have the ```SGX+FLC``` drivers (preferably with the version 1.41) installed on your system before running the ```Docker``` image. [Please check this link to have more information about the drivers.](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
-```bash
-docker run -p 50051:50051 -p 50052:50052 --device /dev/sgx/enclave --device /dev/sgx/provision mithrilsecuritysas/blindai-server:0.1.0 API_KEY
-```
+## Run the server using the docker image 🐳
 
-A [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) is built-in inside the Docker Image in order to generate the DCAP attestation from the enclave. You need to provide an API Key in order for the PCCS server to function. [You can get an API Key here.](https://api.portal.trustedservices.intel.com/provisioning-certification)
+### 1. Hardware requirements and drivers
+
+You will need to have an Intel SGX ready device (with ```SGX+FLC``` support).
+Please make sure to have the ```SGX+FLC``` drivers (preferably with the version **1.41**) installed on your system before running the docker image. 
+[Please check this link to have more information about the drivers.](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
 
 **NOTE**: There is a way to install the SGX+FLC drivers quickly without building them. All you need to do is to follow those commands:
 ```bash
@@ -17,7 +16,33 @@ chmod +x sgx_linux_x64_driver_1.41.bin
 ```
 The binary file contains the drivers signed by Intel, and will proceed to the installation transparently.
 
-### Compile the server and run it from source
+### 2. Prepare your TLS certificates
+
+The docker image ships with a TLS certifcate by default. However, its private key is directly embedded in the public dockerhub image, therefore **it is not secure**, and should be replaced in production.
+
+To generate a new self-signed TLS certificate, you can run
+```bash
+mkdir tls
+openssl req -newkey rsa:2048 -nodes -keyout tls/host_server.key -out tls/host_server.pem -x509 -days 365
+```
+
+### 3. Get a PCCS API key
+
+A [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) is built-in inside the Docker Image in order to generate the DCAP attestation from the enclave. You need to provide an API Key in order for the PCCS server to function. [You can get an API Key from Intel here.](https://api.portal.trustedservices.intel.com/provisioning-certification)
+
+### 4. Run the docker image
+
+```bash
+docker run \
+    -v $(pwd)/tls:/root/tls \
+    -p 50051:50051 \
+    -p 50052:50052 \
+    --device /dev/sgx/enclave \
+    --device /dev/sgx/provision \
+    mithrilsecuritysas/blindai-server:latest PCCS_API_KEY
+```
+
+## Compile the server and run it from source
 
 In order to compile the server, you need to have the following installed on your system:
 * Rust toolchain ```nightly-2021-11-01```
