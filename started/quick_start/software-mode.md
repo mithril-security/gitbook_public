@@ -2,6 +2,8 @@
 
 ### Simulation
 
+Please make sure you're running the server in software mode. Please have a look to the[ installation page (for the software mode) ](../../simulation\_server.md)first.
+
 ```python
 from blindai.client import BlindAiClient, ModelDatumType
 

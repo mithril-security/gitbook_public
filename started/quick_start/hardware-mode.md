@@ -2,6 +2,8 @@
 
 ### Hardware
 
+Please make sure you're running the server in hardware mode. Please have a look to the [installation page (for the hardware mode) ](../../hardware\_server.md)first.
+
 In the hardware mode, we will require to pass to the client the two files that were generated previously by the server, the `policy.toml` and `host_server.pem`.
 
 ```python
