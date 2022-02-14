@@ -12,7 +12,7 @@ We currently only support _Intel SGX_, but we plan to cover _AMD SEV_ and _Nitro
 
 Our solution comes in two parts:
 
-* A secure inference solution to serve \*_AI_ models with privacy guarantees.
+* A secure inference solution to serve _AI_ models with privacy guarantees.
 * A _client SDK_ to securely consume the remote _AI_ models.
 
 ### Features
