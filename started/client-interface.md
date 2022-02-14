@@ -1,6 +1,8 @@
-# Client interface
+---
+description: Technical documentation of the client.
+---
 
-You can find here a technical documentation of the client.
+# Client interface
 
 ### **ModelDatumType**
 
@@ -45,7 +47,7 @@ Returns a **`SimpleReply`** object with the following fields:
 | ok    | `bool` | True if the model is successfully uploaded |
 | msg   | `str`  | message from the server                    |
 
-\### **run\_model (data) -> ModelResult**
+### **run\_model (data) -> ModelResult**
 
 Send data to BlindAI server to perform the inference.
 
