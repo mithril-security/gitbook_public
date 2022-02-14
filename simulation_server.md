@@ -26,12 +26,6 @@ make init
 make SGX_MODE=SW
 ```
 
-Two files will be generated after the building process:
-- **policy.toml :** the enclave security policy that defines which enclave is trusted.
-- **host_server.pem :** TLS certificate for the connection to the untrusted (app) part of the server.
-
-**Those two files are needed by the client to establish a connection with the server.**
-
 If you wish, you can also build yourself the ```Docker``` image with the following commands: 
 ```bash
 docker build . -f docker/software/software-ubuntu-1804.dockerfile -t blindai-server-sim:0.1.0

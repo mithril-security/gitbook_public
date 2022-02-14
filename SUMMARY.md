@@ -1,18 +1,14 @@
 # Summary
 
 * [What is Mithril Security ?](README.md)
-    * [Overview](overview.md)
-    * [Philosophy](philosophy.md)
 * [BlindAI](blindai.md)
     * [Architecture](archi.md)
-    * [Features](features.md)
 * [Get started](started.md)
     * [Installation](installation.md)
         * [Simulation server](simulation_server.md)
         * [Hardware server](hardware_server.md)
         * [Client side](client_side.md)
     * [Quick Start](quick_start.md)
-* [Confidential Computing](confidential_computing.md)
 * [Examples](examples.md)
     * [Speech to text](speech.md)
     * [Image analysis](images.md)
