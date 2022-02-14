@@ -1,7 +1,6 @@
 # Table of contents
 
-* [What is Mithril Security ?](README.md)
-* [BlindAI](blindai.md)
+* [BlindAI](README.md)
   * [Architecture](archi.md)
 * [Get started](started.md)
   * [Installation](installation.md)
