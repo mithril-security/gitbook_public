@@ -34,5 +34,5 @@ make SGX_MODE=SW
 If you wish, you can also build yourself the `Docker` image with the following commands:
 
 ```bash
-docker build . -f docker/software/software-ubuntu-1804.dockerfile -t blindai-server-sim:0.1.0
+docker build . -f docker/software/software-ubuntu-1804.dockerfile -t blindai-server-sim:latest
 ```
