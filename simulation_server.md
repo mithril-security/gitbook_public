@@ -25,6 +25,7 @@ cargo install xargo
 Once your development environment is set up, you can compile the project with those commands:
 
 ```bash
+apt update && apt install libsgx-dcap-default-qpl-dev
 git clone https://github.com/mithril-security/blindai.git
 cd blindai/server
 make init
