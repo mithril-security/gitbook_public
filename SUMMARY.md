@@ -13,7 +13,4 @@
   * [Speech to text](speech.md)
   * [Image analysis](images.md)
 * [Cloud deployment](cloud.md)
-  * [Azure DCSv2](dcsv2.md)
-  * [Azure DCSv3](cloud/azure-dcsv3.md)
-* [Contribute](contribute.md)
 * [Code Repository](https://github.com/mithril-security)
