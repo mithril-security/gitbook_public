@@ -22,10 +22,15 @@ You can get a Docker image having the Intel SGX SDK pre-installed [here](https:/
 cargo install xargo
 ```
 
+If you are building the project using the Docker Image provided above, you will need to install the SGX Default Quote Provider Library:&#x20;
+
+```bash
+apt update && apt install -y libsgx-dcap-default-qpl-dev
+```
+
 Once your development environment is set up, you can compile the project with those commands:
 
 ```bash
-apt update && apt install libsgx-dcap-default-qpl-dev
 git clone https://github.com/mithril-security/blindai.git
 cd blindai/server
 make init
