@@ -43,7 +43,7 @@ docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:0
 
 Our _client SDK_ is rather simple, but behind the scenes, a lot happens. If we are talking to a real _enclave_ (simulation=False), the client actually verifies we are indeed talking with an _enclave_ with the right security properties, such as the code loaded inside the enclave or security patches applied. Once those checks pass, data or model can be uploaded safely, with _end-to-end protection_ through a _TLS_ tunnel ending inside the enclave. Thanks to the data in use, protection of the _enclave_ and verification of the code, everything sent remotely will not be exposed to any third party.
 
-You can learn more about the attestation mechanism for code integrity here.
+You can learn more about the attestation mechanism for code integrity [here](https://sgx101.gitbook.io/sgx101/sgx-bootstrap/attestation).
 
 **i - Upload the model**
 
