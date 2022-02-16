@@ -1,6 +1,6 @@
 # Simulation server
 
-### Docker image of the server 🐳
+## Docker image of the server 🐳
 
 This `Docker` image provides a version of the server that allows you to test the service without having an `Intel SGX` ready device. In order to run the server in `software/simulation mode`, you can simply run this command:
 
@@ -8,7 +8,21 @@ This `Docker` image provides a version of the server that allows you to test the
 sudo docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:latest
 ```
 
-### Compile the server and run it from source
+Please keep in mind that this image is **not secure**, since it simulates Intel SGX in software. It is lighter than hardware mode, and should not be used in production.
+
+## Compile the server and run it from source (using Docker 🐳)
+
+You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproductible build no matter the environment. You can start the process with this command:&#x20;
+
+```bash
+cd server
+make init
+DOCKER_BUILDKIT=1 docker build --target software -t mithrilsecuritysas/blindai-server-sim:latest . -f ./docker/build.dockerfile
+```
+
+As you're building the project in software mode, there is no extra steps needed to run the server. You can directly use the [command above](simulation\_server.md#docker-image-of-the-server) to start the Docker image.
+
+## Compile the server and run it from source
 
 In order to compile the server, you need to have the following installed on your system:
 
@@ -35,10 +49,4 @@ git clone https://github.com/mithril-security/blindai.git
 cd blindai/server
 make init
 make SGX_MODE=SW
-```
-
-If you wish, you can also build yourself the `Docker` image with the following commands:
-
-```bash
-docker build . -f docker/software/software-ubuntu-1804.dockerfile -t blindai-server-sim:latest
 ```

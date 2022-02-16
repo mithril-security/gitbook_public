@@ -1,6 +1,6 @@
 # Hardware server
 
-## Run the server using the docker image 🐳
+## Run the server using the Docker image 🐳
 
 ### 1. Hardware requirements and drivers
 
@@ -43,6 +43,36 @@ docker run \
     mithrilsecuritysas/blindai-server:latest PCCS_API_KEY
 ```
 
+## Compile the server and run it from source (using Docker 🐳)
+
+You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproducible build no matter the environment. You can start the process with those commands:&#x20;
+
+```bash
+cd server
+make init
+DOCKER_BUILDKIT=1 docker build --target hardware -t mithrilsecuritysas/blindai-server:latest . -f ./docker/build.dockerfile
+```
+
+To run the client, you will want to get the `policy.toml` file from the server using:
+
+```bash
+docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/policy.toml > policy.toml
+```
+
+You will need the file `host_server.pem` as well, you will find this file in the folder `bin/tls.`
+
+You can now start the Docker image using this command:&#x20;
+
+```bash
+docker run \
+    -v $(pwd)/bin/tls:/root/tls \
+    -p 50051:50051 \
+    -p 50052:50052 \
+    --device /dev/sgx/enclave \
+    --device /dev/sgx/provision \
+    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
+```
+
 ## Compile the server and run it from source
 
 In order to compile the server, you need to have the following installed on your system:
@@ -81,9 +111,3 @@ Two files will be generated after the building process:
 * **host\_server.pem :** TLS certificate for the connection to the untrusted (app) part of the server.
 
 **Those two files are needed by the client to establish a connection with the server.**
-
-If you wish, you can also build yourself the `Docker` image with the following commands:
-
-```bash
-docker build . -f docker/hardware/hardware-ubuntu-1804.dockerfile -t blindai-server:0.1.0
-```
