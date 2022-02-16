@@ -12,7 +12,7 @@ If you are using the pre-built Docker image, you need to pull the policy with th
 wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/hardware/policy.toml
 ```
 
-If you wish to use the default built-in TLS certificate, you need to pull the certificate first as well (but please remember that this certificate is **not secured**, it is strongly recommanded to [generate your own certificate](../../hardware\_server.md#2.-prepare-your-tls-certificates)):
+If you wish to use the default built-in TLS certificate, you need to pull the certificate first as well (but please remember that this certificate is **not secure**, it is strongly recommanded to [generate your own certificate](../../hardware\_server.md#2.-prepare-your-tls-certificates)):
 
 ```bash
 wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/hardware/host_server.pem
