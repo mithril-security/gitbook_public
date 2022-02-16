@@ -18,6 +18,8 @@ If you wish to use the default built-in TLS certificate, you need to pull the ce
 wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/hardware/host_server.pem
 ```
 
+You can now run this Python script to upload the model:
+
 ```python
 from blindai.client import BlindAiClient, ModelDatumType
 
