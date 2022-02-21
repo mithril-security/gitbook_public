@@ -16,7 +16,7 @@ In order to build the package from this repository, the following requirements m
 * Make >= 4.0
 * g++ >= 7.1
 * python >= 3.6.8
-* python3-dev package (or python-devel in CentOs based distros)
+* python3-dev package (or python-devel in CentOs based distros) - The version of python3-dev depends of the version of python you are using.
 
 Once the requirements are satisfied, proceed as following:
 
