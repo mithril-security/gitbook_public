@@ -13,9 +13,10 @@ $ pip install blindai
 In order to build the package from this repository, the following requirements must be satisfied: **On Linux**
 
 * CMake >= 3.12
+* Make >= 4.0
 * g++ >= 7.1
 * python >= 3.6.8
-* python-dev package (or python-devel in CentOs based distros)
+* python3-dev package (or python-devel in CentOs based distros)
 
 Once the requirements are satisfied, proceed as following:
 
