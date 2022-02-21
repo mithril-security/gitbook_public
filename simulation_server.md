@@ -7,6 +7,8 @@ In order to run the server in ```software/simulation mode```, you can simply run
 sudo docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:0.1.0
 ```
 
+If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
+
 ### Compile the server and run it from source
 
 In order to compile the server, you need to have the following installed on your system:
