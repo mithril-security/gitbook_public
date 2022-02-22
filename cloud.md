@@ -1,9 +1,3 @@
 # Cloud deployment
 
-TODO : intro on Azure DCsvX VM (specifications, most efficient etc...)
-
-## How to deploy on Azure DCSv2
-
-## How to deploy on Azure DCsv3
-
-## Benchmark on Azure DCsvX
+We will soon document how to deploy our solution to Azure Confidential Computing VMs and to other cloud providers.

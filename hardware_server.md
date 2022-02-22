@@ -1,19 +1,19 @@
-# Installation - Server side - Hardware
+# Hardware server
 
-## Run the server using the docker image 🐳
+## Run the server using the Docker image 🐳
 
 ### 1. Hardware requirements and drivers
 
-You will need to have an Intel SGX ready device (with ```SGX+FLC``` support).
-Please make sure to have the ```SGX+FLC``` drivers (preferably with the version **1.41**) installed on your system before running the docker image. 
-[Please check this link to have more information about the drivers.](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
+You will need to have an Intel SGX ready device (with `SGX+FLC` support). Please make sure to have the `SGX+FLC` drivers (preferably with the version **1.41**) installed on your system before running the docker image. [Please check this link to have more information about the drivers.](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux)
 
 **NOTE**: There is a way to install the SGX+FLC drivers quickly without building them. All you need to do is to follow those commands:
+
 ```bash
 wget https://download.01.org/intel-sgx/sgx-linux/2.15.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.41.bin
 chmod +x sgx_linux_x64_driver_1.41.bin
 ./sgx_linux_x64_driver_1.41.bin
 ```
+
 The binary file contains the drivers signed by Intel, and will proceed to the installation transparently.
 
 ### 2. Prepare your TLS certificates
@@ -21,6 +21,7 @@ The binary file contains the drivers signed by Intel, and will proceed to the in
 The docker image ships with a TLS certifcate by default. However, its private key is directly embedded in the public dockerhub image, therefore **it is not secure**, and should be replaced in production.
 
 To generate a new self-signed TLS certificate, you can run
+
 ```bash
 mkdir tls
 openssl req -newkey rsa:2048 -nodes -keyout tls/host_server.key -out tls/host_server.pem -x509 -days 365
@@ -44,21 +45,62 @@ docker run \
 
 If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
 
+## Compile the server and run it from source (using Docker 🐳)
+
+You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproducible build no matter the environment. You can start the process with those commands:&#x20;
+
+```bash
+cd server
+make init
+DOCKER_BUILDKIT=1 docker build --target hardware -t mithrilsecuritysas/blindai-server:latest . -f ./docker/build.dockerfile
+```
+
+To run the client, you will want to get the `policy.toml` file from the server using:
+
+```bash
+docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/policy.toml > policy.toml
+```
+
+You will need the file `host_server.pem` as well, you will find this file in the folder `bin/tls.`
+
+You can now start the Docker image using this command:&#x20;
+
+```bash
+docker run \
+    -v $(pwd)/bin/tls:/root/tls \
+    -p 50051:50051 \
+    -p 50052:50052 \
+    --device /dev/sgx/enclave \
+    --device /dev/sgx/provision \
+    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
+```
+
 ## Compile the server and run it from source
 
 In order to compile the server, you need to have the following installed on your system:
-* Rust toolchain ```nightly-2021-11-01```
+
+* Rust toolchain `nightly-2021-11-01`
 * Cargo & Xargo
 * Intel SGX SDK 2.15.100 + PSW
 
-**You need as well to have a** [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) **installed on your machine in order to execute** ```BlindAI``` in hardware mode.
+**You need as well to have a** [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) **installed on your machine in order to execute** `BlindAI` in hardware mode.
 
-You can get a Docker image having the Intel SGX SDK pre-installed [here](https://github.com/apache/incubator-teaclave-sgx-sdk#pulling-a-pre-built-docker-container). You will still need to install Xargo with the following command: 
+You can get a Docker image having the Intel SGX SDK pre-installed [here](https://github.com/apache/incubator-teaclave-sgx-sdk#pulling-a-pre-built-docker-container). You will still need to install Xargo with the following command:
+
 ```bash
 cargo install xargo
 ```
-Once your development environment is set up, you can compile the project with those commands: 
+
+If you are building the project using the Docker Image provided above, you will need to install the SGX Default Quote Provider Library:&#x20;
+
 ```bash
+apt update && apt install -y libsgx-dcap-default-qpl-dev
+```
+
+Once your development environment is set up, you can compile the project with those commands:
+
+```bash
+apt update && apt install libsgx-dcap-default-qpl-dev
 git clone https://github.com/mithril-security/blindai.git
 cd blindai/server
 make init
@@ -66,12 +108,8 @@ make
 ```
 
 Two files will be generated after the building process:
-- **policy.toml :** the enclave security policy that defines which enclave is trusted.
-- **host_server.pem :** TLS certificate for the connection to the untrusted (app) part of the server.
+
+* **policy.toml :** the enclave security policy that defines which enclave is trusted.
+* **host\_server.pem :** TLS certificate for the connection to the untrusted (app) part of the server.
 
 **Those two files are needed by the client to establish a connection with the server.**
-
-If you wish, you can also build yourself the ```Docker``` image with the following commands: 
-```bash
-docker build . -f docker/hardware/hardware-ubuntu-1804.dockerfile -t blindai-server:0.1.0
-```
