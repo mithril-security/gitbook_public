@@ -47,13 +47,12 @@ BlindAI is checking every 2 seconds if there was any new event (if the server st
 
 If you want a specification of the data we are collecting, you can find the list here:&#x20;
 
-| Param        | description                                                                                              |
-| ------------ | -------------------------------------------------------------------------------------------------------- |
-| user\_id     | This is a random string generated when BlindAI starts. Allows us to group a session data.                |
-| app\_version | BlindAI version number.                                                                                  |
-| event\_type  | Describe the event. It can either be _`started`_, _`upload_model` or `run_model`_                        |
-| device\_id   | Shows if BlindAI was running on Linux and shows if the project was running in software or hardware mode. |
-| sgx\_mode    | Shows if BlindAI was run in software or hardware mode.                                                   |
-| simulation   | connect to the server in the simulation mode (default `False`).                                          |
-| time         | Shows when the event was called.                                                                         |
-| uptime       | Shows the amount of second BlindAI was up when the event was done.                                       |
+| Param         | description                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| `user_id`     | This is a random string generated when BlindAI starts. Allows us to group a session data. |
+| `app_version` | BlindAI version number.                                                                   |
+| `event_type`  | Describe the event. It can either be _`started`_, _`upload_model` or `run_model`_         |
+| `device_id`   | Shows on which system BlindAI was executed.                                               |
+| `sgx_mode`    | Shows if BlindAI was run in software or hardware mode.                                    |
+| `time`        | Shows when the event was called.                                                          |
+| `uptime`      | Shows since how long BlindAI was up when the event was done.                              |
