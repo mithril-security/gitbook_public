@@ -33,9 +33,24 @@ A [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCen
 
 ### 4. Run the docker image
 
+In case you generated your own certificate, you need to run this command:&#x20;
+
 ```bash
 docker run \
     -v $(pwd)/tls:/root/tls \
+    -p 50051:50051 \
+    -p 50052:50052 \
+    --device /dev/sgx/enclave \
+    --device /dev/sgx/provision \
+    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
+```
+
+`-v $(pwd)/tls:/root/tls` allows you to mount your own TLS certificate to the Docker Image.&#x20;
+
+It is also possible to use the default TLS certificate embedded in the Docker image, but please remember that it is **not secured** and should not be used in production:&#x20;
+
+```bash
+docker run \
     -p 50051:50051 \
     -p 50052:50052 \
     --device /dev/sgx/enclave \
