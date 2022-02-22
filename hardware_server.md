@@ -40,14 +40,14 @@ docker run \
     -p 50052:50052 \
     --device /dev/sgx/enclave \
     --device /dev/sgx/provision \
-    mithrilsecuritysas/blindai-server:latest PCCS_API_KEY
+    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
 ```
 
 If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
 
 ## Compile the server and run it from source (using Docker 🐳)
 
-You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproducible build no matter the environment. You can start the process with those commands:&#x20;
+You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproducible build no matter the environment. You can start the process with those commands:
 
 ```bash
 cd server
@@ -63,7 +63,7 @@ docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/policy.toml >
 
 You will need the file `host_server.pem` as well, you will find this file in the folder `bin/tls.`
 
-You can now start the Docker image using this command:&#x20;
+You can now start the Docker image using this command:
 
 ```bash
 docker run \
@@ -91,7 +91,7 @@ You can get a Docker image having the Intel SGX SDK pre-installed [here](https:/
 cargo install xargo
 ```
 
-If you are building the project using the Docker Image provided above, you will need to install the SGX Default Quote Provider Library:&#x20;
+If you are building the project using the Docker Image provided above, you will need to install the SGX Default Quote Provider Library:
 
 ```bash
 apt update && apt install -y libsgx-dcap-default-qpl-dev
