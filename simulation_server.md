@@ -12,7 +12,7 @@ Please keep in mind that this image is **not secure**, since it simulates Intel 
 
 ## Compile the server and run it from source (using Docker 🐳)
 
-You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproductible build no matter the environment. You can start the process with this command:
+You can build the whole project by using our Docker image. We did set up the Docker image to have a reproductible build no matter the environment. You can start the process with this command:
 
 ```bash
 cd server
