@@ -58,7 +58,7 @@ docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/tls/host_serv
 
 ### Advanced - Prepare your TLS certificates and inject it into BlindAI
 
-As you readed above, the Docker image ships with a TLS certifcate by default. However, its private key is directly embedded in the public Docker hub image, therefore **it is not secure**, and should be replaced in production.
+As you read above, the Docker image ships with a TLS certifcate by default. However, its private key is directly embedded in the public Docker hub image, therefore **it is not secure**, and should be replaced in production.
 
 To generate a new self-signed TLS certificate, you can run
 
