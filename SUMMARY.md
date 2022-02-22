@@ -3,6 +3,7 @@
 * [BlindAI](README.md)
   * [Architecture](archi.md)
 * [Get started](started.md)
+  * [Page 1](started/page-1.md)
   * [Installation](installation.md)
     * [Simulation server](simulation\_server.md)
     * [Hardware server](hardware\_server.md)

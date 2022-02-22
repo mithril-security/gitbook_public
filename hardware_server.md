@@ -16,38 +16,13 @@ chmod +x sgx_linux_x64_driver_1.41.bin
 
 The binary file contains the drivers signed by Intel, and will proceed to the installation transparently.
 
-### 2. Prepare your TLS certificates
-
-The docker image ships with a TLS certifcate by default. However, its private key is directly embedded in the public dockerhub image, therefore **it is not secure**, and should be replaced in production.
-
-To generate a new self-signed TLS certificate, you can run
-
-```bash
-mkdir tls
-openssl req -newkey rsa:2048 -nodes -keyout tls/host_server.key -out tls/host_server.pem -x509 -days 365
-```
-
-### 3. Get a PCCS API key
+### 2. Get a PCCS API key
 
 A [Provisioning Certificate Caching Service](https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md) is built-in inside the Docker Image in order to generate the DCAP attestation from the enclave. You need to provide an API Key in order for the PCCS server to function. [You can get an API Key from Intel here.](https://api.portal.trustedservices.intel.com/provisioning-certification)
 
-### 4. Run the docker image
+### 3. Run the docker image
 
-In case you generated your own certificate, you need to run this command:&#x20;
-
-```bash
-docker run \
-    -v $(pwd)/tls:/root/tls \
-    -p 50051:50051 \
-    -p 50052:50052 \
-    --device /dev/sgx/enclave \
-    --device /dev/sgx/provision \
-    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
-```
-
-`-v $(pwd)/tls:/root/tls` allows you to mount your own TLS certificate to the Docker Image.&#x20;
-
-It is also possible to use the default TLS certificate embedded in the Docker image, but please remember that it is **not secured** and should not be used in production:&#x20;
+You can easily run the Docker image with this command:&#x20;
 
 ```bash
 docker run \
@@ -60,11 +35,51 @@ docker run \
 
 If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
 
-To run the client, you will want to get the `policy.toml` file from the server using:
+You can easily get the policy and certificate using wget, with these commands:&#x20;
 
 ```bash
+wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/distilbert/hardware/policy.toml
+wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/distilbert/hardware/host_server.pem
+```
+
+### Advanced - Extract policy and default TLS certificate from the Docker Image
+
+You can extract the policy directly from the Docker Image using:
+
+```
 docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/policy.toml > policy.toml
 ```
+
+You can also extract the default TLS certificate like this:&#x20;
+
+```
+docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/tls/host_server.pem > host_server.pem
+```
+
+### Advanced - Prepare your TLS certificates and inject it into BlindAI
+
+As you readed above, the docker image ships with a TLS certifcate by default. However, its private key is directly embedded in the public dockerhub image, therefore **it is not secure**, and should be replaced in production.
+
+To generate a new self-signed TLS certificate, you can run
+
+```bash
+mkdir tls
+openssl req -newkey rsa:2048 -nodes -keyout tls/host_server.key -out tls/host_server.pem -x509 -days 365
+```
+
+Once you generated your TLS certificate, you can use it with the project:
+
+```bash
+docker run \
+    -v $(pwd)/tls:/root/tls \
+    -p 50051:50051 \
+    -p 50052:50052 \
+    --device /dev/sgx/enclave \
+    --device /dev/sgx/provision \
+    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
+```
+
+`-v $(pwd)/tls:/root/tls` allows you to mount your own TLS certificate to the Docker Image.&#x20;
 
 ## Compile the server and run it from source (using Docker 🐳)
 

@@ -5,14 +5,14 @@
 This `Docker` image provides a version of the server that allows you to test the service without having an `Intel SGX` ready device. In order to run the server in `software/simulation mode`, you can simply run this command:
 
 ```bash
-sudo docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:latest
+docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:latest
 ```
 
 Please keep in mind that this image is **not secure**, since it simulates Intel SGX in software. It is lighter than hardware mode, and should not be used in production.
 
 ## Compile the server and run it from source (using Docker 🐳)
 
-You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproductible build no matter the environment. You can start the process with this command:&#x20;
+You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproductible build no matter the environment. You can start the process with this command:
 
 ```bash
 cd server
@@ -23,6 +23,7 @@ DOCKER_BUILDKIT=1 docker build --target software -t mithrilsecuritysas/blindai-s
 If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
 
 ### Compile the server and run it from source
+
 As you're building the project in software mode, there is no extra steps needed to run the server. You can directly use the [command above](simulation\_server.md#docker-image-of-the-server) to start the Docker image.
 
 ## Compile the server and run it from source
@@ -39,7 +40,7 @@ You can get a Docker image having the Intel SGX SDK pre-installed [here](https:/
 cargo install xargo
 ```
 
-If you are building the project using the Docker Image provided above, you will need to install the SGX Default Quote Provider Library:&#x20;
+If you are building the project using the Docker Image provided above, you will need to install the SGX Default Quote Provider Library:
 
 ```bash
 apt update && apt install -y libsgx-dcap-default-qpl-dev

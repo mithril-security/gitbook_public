@@ -2,20 +2,29 @@
 
 ### Hardware
 
-Please make sure you're running the server in hardware mode. Please have a look to the [installation page (for the hardware mode) ](../../hardware\_server.md)first.
+You can easily run BlindAI with this command:&#x20;
+
+```bash
+docker run \
+    -p 50051:50051 \
+    -p 50052:50052 \
+    --device /dev/sgx/enclave \
+    --device /dev/sgx/provision \
+    mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
+```
 
 In the hardware mode, we will require to pass to the client the two files that were generated previously by the server, the `policy.toml` and `host_server.pem`.
 
 If you are using the pre-built Docker image, you need to pull the policy with this command:&#x20;
 
 ```bash
-docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/policy.toml > policy.toml
+wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/distilbert/hardware/policy.toml
 ```
 
 If you wish to use the default built-in TLS certificate, you need to pull the certificate first as well (but please remember that this certificate is **not secure**, it is strongly recommanded to [generate your own certificate](../../hardware\_server.md#2.-prepare-your-tls-certificates)):
 
 ```bash
-docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/tls/host_server.pem > host_server.pem
+wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/distilbert/hardware/host_server.pem
 ```
 
 You can now run this Python script to upload the model:

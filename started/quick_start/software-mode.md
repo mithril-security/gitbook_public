@@ -2,7 +2,11 @@
 
 ### Simulation
 
-Please make sure you're running the server in software mode. Please have a look to the[ installation page (for the software mode) ](../../simulation\_server.md)first.
+You can easily run BlindAI with this command:&#x20;
+
+```bash
+docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:latest
+```
 
 ```python
 from blindai.client import BlindAiClient, ModelDatumType
