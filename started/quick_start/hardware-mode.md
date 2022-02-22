@@ -9,13 +9,13 @@ In the hardware mode, we will require to pass to the client the two files that w
 If you are using the pre-built Docker image, you need to pull the policy with this command:&#x20;
 
 ```bash
-wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/distilbert/hardware/policy.toml
+docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/policy.toml > policy.toml
 ```
 
 If you wish to use the default built-in TLS certificate, you need to pull the certificate first as well (but please remember that this certificate is **not secure**, it is strongly recommanded to [generate your own certificate](../../hardware\_server.md#2.-prepare-your-tls-certificates)):
 
 ```bash
-wget https://raw.githubusercontent.com/mithril-security/blindai/master/examples/distilbert/hardware/host_server.pem
+docker run mithrilsecuritysas/blindai-server:latest /bin/cat /root/host_server.pem > host_server.pem
 ```
 
 You can now run this Python script to upload the model:
