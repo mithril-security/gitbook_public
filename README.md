@@ -36,7 +36,7 @@ Because the server requires specific hardware, for instance _Intel SGX_ currentl
 Deploy the inference server, for instance using one of our _Docker_ images. To get started quickly, you can use the image with simulation, which does not require any specific hardware.
 
 ```bash
-docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:0.1.0 
+docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:latest 
 ```
 
 #### B - Sending data from the client to the server
