@@ -21,7 +21,7 @@ This feature can be disabled at any time and any collected data can be deleted o
 
 We are collecting those data solely to improve our project and see how BlindAI is used, to improve it and keep working on it full-time.
 
-In order to do all of this, we need some data to see which features are the most used and if BlindAI is used in production mode or not. Having those data shows us on what we should focus to give the best experience possible to our users. In addition, it prove to our investors that our project is being used, allowing us to keep the project alive.&#x20;
+In order to do all of this, we need some data to see which features are the most used and if BlindAI is used in hardware or software mode. Having those data shows us on what we should focus to give the best experience possible to our users. In addition, it proves to our investors that our project is being used, allowing us to keep the project alive.&#x20;
 
 ### Disable Telemetry <a href="#what-kind-of-data-do-we-collect" id="what-kind-of-data-do-we-collect"></a>
 
