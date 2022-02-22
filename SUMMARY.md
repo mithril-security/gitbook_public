@@ -13,4 +13,5 @@
 * [Client API](client-interface.md)
 * [Examples](examples.md)
 * [Cloud deployment](cloud.md)
+* [Telemetry](telemetry.md)
 * [Code Repository](https://github.com/mithril-security)
