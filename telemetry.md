@@ -51,7 +51,7 @@ If you want a specification of the data we are collecting, you can find the list
 | ------------- | ----------------------------------------------------------------------------------------- |
 | `user_id`     | This is a random string generated when BlindAI starts. Allows us to group session's data. |
 | `app_version` | BlindAI version number.                                                                   |
-| `event_type`  | Describe the event. It can either be _`started`_, _`upload_model` or `run_model`_         |
+| `event_type`  | Describe the event. It can either be _`started`_, _`send_model` or `run_model`_           |
 | `device_id`   | Shows on which system BlindAI was executed.                                               |
 | `sgx_mode`    | Shows if BlindAI was run in software or hardware mode.                                    |
 | `time`        | Shows when the event was called.                                                          |
