@@ -43,6 +43,8 @@ docker run \
     mithrilsecuritysas/blindai-server:latest PCCS_API_KEY
 ```
 
+If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
+
 ## Compile the server and run it from source (using Docker 🐳)
 
 You can build the whole project by using our Dockerimage. We did set up the Dockerimage to have a reproducible build no matter the environment. You can start the process with those commands:&#x20;

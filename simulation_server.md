@@ -20,6 +20,9 @@ make init
 DOCKER_BUILDKIT=1 docker build --target software -t mithrilsecuritysas/blindai-server-sim:latest . -f ./docker/build.dockerfile
 ```
 
+If you wish to disable telemetry, you can add the `-e BLINDAI_DISABLE_TELEMETRY=1` parameter to the run command.
+
+### Compile the server and run it from source
 As you're building the project in software mode, there is no extra steps needed to run the server. You can directly use the [command above](simulation\_server.md#docker-image-of-the-server) to start the Docker image.
 
 ## Compile the server and run it from source
