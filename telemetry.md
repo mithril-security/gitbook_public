@@ -54,5 +54,6 @@ If you want a specification of the data we are collecting, you can find the list
 | `event_type`  | Describe the event. It can either be _`started`_, _`send_model` or `run_model`_           |
 | `device_id`   | Shows on which system BlindAI was executed.                                               |
 | `sgx_mode`    | Shows if BlindAI was run in software or hardware mode.                                    |
+| `model_size`  | Size of the uploaded model, in bytes.                                                     |
 | `time`        | Shows when the event was called.                                                          |
 | `uptime`      | Shows since how long BlindAI was up when the event was done.                              |
