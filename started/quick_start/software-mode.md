@@ -8,6 +8,8 @@ You can easily run BlindAI with this command:&#x20;
 docker run -p 50051:50051 -p 50052:50052 mithrilsecuritysas/blindai-server-sim:latest
 ```
 
+**Please make sure the ports 50051 and 50052 are open.**
+
 You can now run this Python script to upload the model:
 
 ```python

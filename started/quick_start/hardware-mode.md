@@ -13,6 +13,8 @@ docker run \
     mithrilsecuritysas/blindai-server:latest /root/start.sh PCCS_API_KEY
 ```
 
+**Please make sure the ports 50051 and 50052 are open.**
+
 In the hardware mode, we will require to pass to the client the two files that were generated previously by the server, the `policy.toml` and `host_server.pem`.
 
 If you are using the pre-built Docker image, you need to pull the policy with this command:&#x20;

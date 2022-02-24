@@ -12,6 +12,7 @@
     * [Hardware Mode](started/quick\_start/hardware-mode.md)
 * [Client API](client-interface.md)
 * [Examples](examples.md)
-* [Cloud deployment](cloud.md)
+* [Cloud deployment](cloud/README.md)
+  * [Azure DCXs\_V2](cloud/azure-dcxs\_v2.md)
 * [Telemetry](telemetry.md)
 * [Code Repository](https://github.com/mithril-security)
