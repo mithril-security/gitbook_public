@@ -8,6 +8,8 @@ You will need to have an Intel SGX ready device (with `SGX+FLC` support). Please
 
 **NOTE**: There is a way to install the SGX+FLC drivers quickly without building them. All you need to do is to follow those commands:
 
+**NOTE2:** If you are using an Azure DCXS VM, please skip this step, the drivers are already installed.
+
 ```bash
 wget https://download.01.org/intel-sgx/sgx-linux/2.15.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.41.bin
 chmod +x sgx_linux_x64_driver_1.41.bin
