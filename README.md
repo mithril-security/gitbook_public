@@ -1,6 +1,6 @@
 # BlindAI
 
-[**Website**](https://www.mithrilsecurity.io) **|** [**LinkedIn**](https://www.linkedin.com/company/mithril-security-company) **|** [**Blog**](https://blog.mithrilsecurity.io) **|** [**Twitter**](https://www.twitter.com/mithrilsecurity) **|** [**Discord**](https://discord.gg/rWHcHeCBWk)
+[**Website**](https://www.mithrilsecurity.io) **|** [**LinkedIn**](https://www.linkedin.com/company/mithril-security-company) **|** [**Blog**](https://blog.mithrilsecurity.io) **|** [**Twitter**](https://www.twitter.com/mithrilsecurity) **|** [**Discord**](https://discord.gg/TxEHagpWd4)****
 
 #### Fast, accessible and privacy friendly AI deployment 🚀🔒
 
