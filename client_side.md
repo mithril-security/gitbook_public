@@ -8,6 +8,10 @@
 $ pip install blindai
 ```
 
+**NOTE:** For now, the library is only compatible with Linux. We are working on a native Windows version, but If you are using Windows, you can still use the library with [Windows Subsystem for Linux](https://docs.microsoft.com/fr-fr/windows/wsl/install) in the meantime.&#x20;
+
+Once the installation is done, you are good to go! Have a look to [Quick Start](started/quick\_start/).
+
 #### Build from source
 
 In order to build the package from this repository, the following requirements must be satisfied: **On Linux**
