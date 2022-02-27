@@ -1,6 +1,6 @@
-# Azure DCs\_V2
+# Azure DCs\_v2
 
-You can easily deploy BlindAI on Azure DCs\_V2 VMs. BlindAI works out of the box, all you need to do is to follow those steps to deploy a VM :&#x20;
+You can easily deploy BlindAI on Azure DCs\_v2 VMs. BlindAI works out of the box, all you need to do is to follow those steps to deploy a VM :&#x20;
 
 ### 1 - Create your Azure account (if you don't have already one)
 
@@ -18,7 +18,7 @@ After this, you will start to see a configuration screen. Please select either *
 
 ![Basic configuration](<../.gitbook/assets/2022-02-24 11\_57\_19.png>)
 
-On the next page, you will choose the VM you want to use. We strongly advise you to pick the **DC2s V2 VM** to test BlindAI. Before going to the next page, please remember to **allow the connection from SSH**.
+On the next page, you will choose the VM you want to use. We strongly advise you to pick the **DC2s v2 VM** to test BlindAI. Before going to the next page, please remember to **allow the connection from SSH**.
 
 ![VM settings](<../.gitbook/assets/2022-02-24 11\_12\_05.png>)
 
