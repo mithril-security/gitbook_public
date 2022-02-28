@@ -13,6 +13,6 @@
 * [Client API](client-interface.md)
 * [Examples](examples.md)
 * [Cloud deployment](cloud/README.md)
-  * [Azure DCs\_v2](cloud/azure-dcxs\_v2.md)
+  * [Azure DCsv2](cloud/azure-dcsv2.md)
 * [Telemetry](telemetry.md)
 * [Code Repository](https://github.com/mithril-security)

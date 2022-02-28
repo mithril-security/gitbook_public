@@ -1,10 +1,10 @@
-# Azure DCs\_v2
+# Azure DCsv2
 
-You can easily deploy BlindAI on Azure DCs\_v2 VMs. BlindAI works out of the box, all you need to do is to follow those steps to deploy a VM :&#x20;
+You can easily deploy BlindAI on [Azure DCsv2 VMs](https://docs.microsoft.com/en-us/azure/virtual-machines/dcv2-series). BlindAI works out of the box, all you need to do is to follow those steps to deploy a VM :&#x20;
 
 ### 1 - Create your Azure account (if you don't have already one)
 
-First thing first, you need to create an account on Azure. If you want to try the service for free, it is strongly advised to subscribe [to the free trial.](https://azure.microsoft.com/en-us/free/) Click on the link to have more informations.
+First thing first, you need to create an account on Azure. If you want to try the service for free, it is strongly advised to subscribe [to the free trial.](https://azure.microsoft.com/en-us/free/) Click on the link to have more information.
 
 ### 2 - Create the VM
 
@@ -68,6 +68,6 @@ chmod +x sgx_linux_x64_driver_1.41.bin
 
 **If you are getting an error while installing the drivers, it might means that you picked the wrong VM. Please restart the process in that case.**
 
-If you are good to go, you need to install Docker on the VM. [Please follow these instructions to get started quickly. ](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+If you are good to go, you just need to install Docker on the VM. [Please follow these instructions to get started quickly. ](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
 Once Docker is installed, you are good to go to start using BlindAI. Please follow the instructions in [Hardware server](../hardware\_server.md#run-the-server-using-the-docker-image), and [Quick Start](../started/quick\_start/#an-example-on-distilbert) to start using BlindAI.
