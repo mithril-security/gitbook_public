@@ -74,7 +74,7 @@ You can build the whole project by using our Dockerimage. We did set up the Dock
 ```bash
 cd server
 make init
-DOCKER_BUILDKIT=1 docker build --target hardware -t mithrilsecuritysas/blindai-server-dcsv3:latest . -f ./docker/build.dockerfile
+DOCKER_BUILDKIT=1 docker build --target hardware-dcsv3 -t mithrilsecuritysas/blindai-server-dcsv3:latest . -f ./docker/build.dockerfile
 ```
 
 To run the client, you will want to get the `policy.toml` file from the server using:
