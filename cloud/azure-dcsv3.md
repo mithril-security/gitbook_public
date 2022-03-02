@@ -70,4 +70,4 @@ chmod +x sgx_linux_x64_driver_1.41.bin
 
 If you are good to go, you just need to install Docker on the VM. [Please follow these instructions to get started quickly. ](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
-Once Docker is installed, you are good to go to start using BlindAI. Please follow the instructions in [Hardware server (for Azure DCs v3)](azure-dcsv3.md), and [Quick Start](../started/quick\_start/#an-example-on-distilbert) to start using BlindAI.&#x20;
+Once Docker is installed, you are good to go to start using BlindAI. Please follow the instructions in [Hardware server (for Azure DCs v3)](../started/installation/hardware\_server-dcsv3.md), and [Quick Start](../started/quick\_start/#an-example-on-distilbert) to start using BlindAI.&#x20;
