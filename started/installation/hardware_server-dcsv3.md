@@ -94,7 +94,7 @@ docker run \
     -p 50052:50052 \
     --device /dev/sgx/enclave \
     --device /dev/sgx/provision \
-    mithrilsecuritysas/blindai-server-dcsv3:latest /root/start.sh PCCS_API_KEY
+    mithrilsecuritysas/blindai-server-dcsv3:latest
 ```
 
 ## Compile the server and run it from source
