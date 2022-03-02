@@ -43,5 +43,5 @@ Now that we have an ONNX file we are ready to upload it to our inference server.
 
 ### Step 3: Send the model to the server
 
-The next step won't be the same depending if you are running the server in [Hardware](hardware-mode.md) or [Software ](software-mode.md)mode.
+The next step won't be the same depending if you are running the server in [Hardware](hardware-mode.md) or [Software ](software-mode.md)mode. If you are running BlindAI on an Azure DCs v3 VM, please refer to [this page](hardware-mode-dcsv3.md).
 

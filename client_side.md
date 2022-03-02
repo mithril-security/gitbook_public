@@ -66,6 +66,6 @@ $ pip install -r requirements.txt
 1. Trigger the build and installation
 
 ```bash
-pip install .
+pip install . --use-feature=in-tree-build
 ```
 
