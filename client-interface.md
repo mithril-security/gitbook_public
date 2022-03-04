@@ -2,7 +2,7 @@
 description: Technical documentation of the client.
 ---
 
-# Client interface
+# Client API
 
 ### **ModelDatumType**
 
@@ -17,7 +17,7 @@ An enumeration of the acceptable input data types. Used to specify the type of t
 | U32    | unsigned32 |
 | U64    | unsigned64 |
 
-### **connect\_server (addr, certificate, policy, simulation)-> bool**
+### **connect\_server (addr, certificate, policy, simulation)**
 
 Estabilish a connection with BlindAI inference server and perform the process of requesting and verifying the attestation.
 
@@ -28,7 +28,13 @@ Estabilish a connection with BlindAI inference server and perform the process of
 | policy      | `str`  | path to the toml file describing the policy of the server. Generated in the server side. |
 | simulation  | `bool` | connect to the server in the simulation mode (default `False`).                          |
 
-Returns a boolean describing whether the connection was successful or not.
+The function won't return anything if the connection was successful. In case of an issue, appropriate exceptions will be raised:
+
+| exception type    | description                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| ValueError        | will be raised in case the policy doesn't match the server identity and configuration.      |
+| ConnectionError   | will be raised if the connection with the server fails.                                     |
+| FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
 
 ### **upload\_model (model, shape) -> SimpleReply**
 
@@ -47,6 +53,13 @@ Returns a **`SimpleReply`** object with the following fields:
 | ok    | `bool` | True if the model is successfully uploaded |
 | msg   | `str`  | message from the server                    |
 
+Those exceptions can be raised in case or error:
+
+| exception type    | description                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| ConnectionError   | will be raised if the connection with the server fails.                                     |
+| FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
+
 ### **run\_model (data) -> ModelResult**
 
 Send data to BlindAI server to perform the inference.
@@ -62,6 +75,14 @@ Returns a **`ModelResult`** object with the following fields:
 | output | `[float]` | output returned by the model             |
 | ok     | `bool`    | True if the model is successfully upload |
 | msg    | `str`     | message from the server                  |
+
+Those exceptions can be raised in case or error:
+
+| exception type      | description                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------- |
+| ConnectionError     | will be raised if the connection with the server fails.                                     |
+| FileNotFoundError   | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
+| CBOREncodeTypeError | Will be raised if the data can't be serialized.                                             |
 
 ### **close\_connection ( )**
 
