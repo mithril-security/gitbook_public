@@ -2,10 +2,12 @@
 
 The project has several parts:
 
-* **SCHEDULER**: Contains the main part of the program. This part is divided in three parts:
-  * **TRUSTED**: `Enclave` part. Contains the `GRPC` servers (unattested server and attested server), and `Tract`, the inference library.
-  * **COMMON**: Contains structure definitions and network-related functions that are common to trusted and untrusted part.
-  * **UNTRUSTED**: `Host` part. Start the trusted part and contain the `RPC` `DCAP` attestation server.
-* **ATTESTATION**: Contains the `DCAP attestation` library. Imported from the project Teaclave and modified for our needs.
-* **API**: Contains the `proto` definition files for the unattested and attested `GRPC` servers.
-* **CLIENT**: Allows the connection to the `SCHEDULER`. Contains simple functions to perform the connection and server verification according to a policy provided by the user.
+* `/client`: python client for blindai
+* `/server`: the inference server, programmed using the [Rust programming language](https://www.rust-lang.org/)
+  * `/server/proto`: the gRPC protobuf files, for RPC communication between the server and clients
+  * `/server/blindai_app`: the host part, responsible for starting and managing the enclave
+  * `/server/blindai_sgx`: the enclave part (trusted execution environnement), using Intel SGX
+  * `/server/blindai_sgx_attestation`: DCAP attestation library, imported from the Apache Teaclave project and modified to suit our needs
+  * `/server/blindai_common`: common library used by the host and enclave
+  * `/server/blindai_rpc`: common library used by the host and enclave, used for rpc communications
+
