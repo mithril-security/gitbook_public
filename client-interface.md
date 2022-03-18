@@ -33,57 +33,61 @@ The function won't return anything if the connection was successful. In case of 
 | exception type    | description                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------- |
 | ValueError        | will be raised in case the policy doesn't match the server identity and configuration.      |
+| VersionError      | Will be raised if the version of the server is not supported by the client.                 |  
 | ConnectionError   | will be raised if the connection with the server fails.                                     |
 | FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
 
-### **upload\_model (model, shape) -> SimpleReply**
+### **upload\_model (model, shape)** 
 
 Upload a pretrained model in ONNX format to BlindAI server.
 
-| Param | Type             | description                      |
-| ----- | ---------------- | -------------------------------- |
-| model | `str`            | path to model file               |
-| shape | `(int,)`         | the shape of the model input     |
-| dtype | `ModelDatumType` | the type of the model input data |
+| Param | Type             | description                                                 |
+| ----- | ---------------- | ----------------------------------------------------------- |
+| model | `str`            | path to model file                                          |
+| shape | `(int,)`         | the shape of the model input                                |
+| dtype | `ModelDatumType` | the type of the model input data                            |
+| sign  | `Boolean`        | get signed response from the server or not (default `True`) |
 
-Returns a **`SimpleReply`** object with the following fields:
-
-| field | Type   | description                                |
-| ----- | ------ | ------------------------------------------ |
-| ok    | `bool` | True if the model is successfully uploaded |
-| msg   | `str`  | message from the server                    |
-
-Those exceptions can be raised in case or error:
+The function won't return anything if the upload was successful. Those exceptions can be raised in case or error:
 
 | exception type    | description                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------- |
 | ConnectionError   | will be raised if the connection with the server fails.                                     |
-| FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
+| FileNotFoundError | will be raised if the model file is not found.                                              |
+| SignatureError    | will be raised when the signature or the returned digest is invalid                         |
 
-### **run\_model (data) -> ModelResult**
+### **run\_model (data) -> [floats]**
 
 Send data to BlindAI server to perform the inference.
 
 | Param | Type       | description                                                                                |
 | ----- | ---------- | ------------------------------------------------------------------------------------------ |
 | data  | `[number]` | array of numbers, the numbers must be of the same type `datum` specified in `upload_model` |
+| sign  | `Boolean`  | get signed response from the server or not (default `True`)                                |
 
-Returns a **`ModelResult`** object with the following fields:
 
-| field  | Type      | description                              |
-| ------ | --------- | ---------------------------------------- |
-| output | `[float]` | output returned by the model             |
-| ok     | `bool`    | True if the model is successfully upload |
-| msg    | `str`     | message from the server                  |
+Returns an array of floats containing the results of the inference.
 
 Those exceptions can be raised in case or error:
 
 | exception type      | description                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------- |
 | ConnectionError     | will be raised if the connection with the server fails.                                     |
-| FileNotFoundError   | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
-| CBOREncodeTypeError | Will be raised if the data can't be serialized.                                             |
+| CBOREncodeTypeError | will be raised if the data can't be serialized.                                             |
+| SignatureError      | will be raised when the signature or the returned digest is invalid                         |
 
 ### **close\_connection ( )**
-
 Close the connection between the client and the inference server.
+
+### **export\_proof ( )**
+Dump the proof of execution to a json file. 
+| Param | Type       | description                                                                                |
+| ----- | ---------- | ------------------------------------------------------------------------------------------ |
+| path  | `str`      | path to the file in which the results should be written.                                   |
+
+The resulted file will contain the following information:           
+| field   | description                                                                                           |
+| ------- | ----------------------------------------------------------------------------------------------------- |
+| ctx     | the quote sent by the enclave. It is equal to 'None' if the server is running in the simulation mode. |
+| replies | a list of the signed responses received from the server during the connection.                        |
+
