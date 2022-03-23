@@ -37,7 +37,7 @@ The function won't return anything if the connection was successful. In case of 
 | ConnectionError   | will be raised if the connection with the server fails.                                     |
 | FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
 
-### **upload\_model (model, shape)** 
+### **upload\_model (model, shape) -> UploadModelResponse** 
 
 Upload a pretrained model in ONNX format to BlindAI server.
 
@@ -48,7 +48,13 @@ Upload a pretrained model in ONNX format to BlindAI server.
 | dtype | `ModelDatumType` | the type of the model input data                            |
 | sign  | `Boolean`        | get signed response from the server or not (default `True`) |
 
-The function won't return anything if the upload was successful. Those exceptions can be raised in case or error:
+Returns a `UploadModelResponse` object with the follwing fields:
+
+| Param | Type             | description                                                                           |
+| ----- | ---------------- | ------------------------------------------------------------------------------------- |
+| proof | `ProofData`      | proof of the execution, contains the signature and the payload returned by the server |
+
+Those exceptions can be raised in case or error:
 
 | exception type    | description                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------- |
@@ -56,7 +62,7 @@ The function won't return anything if the upload was successful. Those exception
 | FileNotFoundError | will be raised if the model file is not found.                                              |
 | SignatureError    | will be raised when the signature or the returned digest is invalid                         |
 
-### **run\_model (data) -> [floats]**
+### **run\_model (data) -> RunModelResponse**
 
 Send data to BlindAI server to perform the inference.
 
@@ -66,7 +72,12 @@ Send data to BlindAI server to perform the inference.
 | sign  | `Boolean`  | get signed response from the server or not (default `True`)                                |
 
 
-Returns an array of floats containing the results of the inference.
+Returns a `UploadModelResponse` object with the follwing fields:
+
+| Param  | Type             | description                                                                           |
+| ------ | ---------------- | ------------------------------------------------------------------------------------- |
+| proof  | `ProofData`      | proof of the execution, contains the signature and the payload returned by the server |
+| output | `List(float)`    | the inference results returned by the server                                          |
 
 Those exceptions can be raised in case or error:
 
@@ -78,16 +89,4 @@ Those exceptions can be raised in case or error:
 
 ### **close\_connection ( )**
 Close the connection between the client and the inference server.
-
-### **export\_proof ( )**
-Dump the proof of execution to a json file. 
-| Param | Type       | description                                                                                |
-| ----- | ---------- | ------------------------------------------------------------------------------------------ |
-| path  | `str`      | path to the file in which the results should be written.                                   |
-
-The resulted file will contain the following information:           
-| field   | description                                                                                           |
-| ------- | ----------------------------------------------------------------------------------------------------- |
-| ctx     | the quote sent by the enclave. It is equal to 'None' if the server is running in the simulation mode. |
-| replies | a list of the signed responses received from the server during the connection.                        |
 
