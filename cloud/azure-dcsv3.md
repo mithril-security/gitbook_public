@@ -32,7 +32,7 @@ After a few minutes, the VM will be successfully deployed. Before connecting to 
 
 ![Setting up DNS name - 1](<../.gitbook/assets/2022-03-02 16\_38\_31.png>)
 
-![Setting up DNS name - 2](<../.gitbook/assets/2022-02-24 12\_07\_22.png>)
+![Setting up DNS name - 2](<../.gitbook/assets/2022-02-24 12\_07\_22 (1).png>)
 
 Once you are done with this, we have to **open the ports used by BlindAI.** You need to open the ports **50051 and 50052.**
 

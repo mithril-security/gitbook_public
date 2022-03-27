@@ -2,7 +2,7 @@
 description: Technical documentation of the client.
 ---
 
-# Client API
+# Version 0.2.0
 
 ### **ModelDatumType**
 
@@ -33,60 +33,57 @@ The function won't return anything if the connection was successful. In case of 
 | exception type    | description                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------- |
 | ValueError        | will be raised in case the policy doesn't match the server identity and configuration.      |
-| VersionError      | Will be raised if the version of the server is not supported by the client.                 |  
 | ConnectionError   | will be raised if the connection with the server fails.                                     |
 | FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
 
-### **upload\_model (model, shape) -> UploadModelResponse** 
+### **upload\_model (model, shape) -> SimpleReply**
 
 Upload a pretrained model in ONNX format to BlindAI server.
 
-| Param | Type             | description                                                 |
-| ----- | ---------------- | ----------------------------------------------------------- |
-| model | `str`            | path to model file                                          |
-| shape | `(int,)`         | the shape of the model input                                |
-| dtype | `ModelDatumType` | the type of the model input data                            |
-| sign  | `Boolean`        | get signed response from the server or not (default `True`) |
+| Param | Type             | description                      |
+| ----- | ---------------- | -------------------------------- |
+| model | `str`            | path to model file               |
+| shape | `(int,)`         | the shape of the model input     |
+| dtype | `ModelDatumType` | the type of the model input data |
 
-Returns a `UploadModelResponse` object with the follwing fields:
+Returns a **`SimpleReply`** object with the following fields:
 
-| Param | Type             | description                                                                           |
-| ----- | ---------------- | ------------------------------------------------------------------------------------- |
-| proof | `ProofData`      | proof of the execution, contains the signature and the payload returned by the server |
+| field | Type   | description                                |
+| ----- | ------ | ------------------------------------------ |
+| ok    | `bool` | True if the model is successfully uploaded |
+| msg   | `str`  | message from the server                    |
 
 Those exceptions can be raised in case or error:
 
 | exception type    | description                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------- |
 | ConnectionError   | will be raised if the connection with the server fails.                                     |
-| FileNotFoundError | will be raised if the model file is not found.                                              |
-| SignatureError    | will be raised when the signature or the returned digest is invalid                         |
+| FileNotFoundError | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
 
-### **run\_model (data) -> RunModelResponse**
+### **run\_model (data) -> ModelResult**
 
 Send data to BlindAI server to perform the inference.
 
 | Param | Type       | description                                                                                |
 | ----- | ---------- | ------------------------------------------------------------------------------------------ |
 | data  | `[number]` | array of numbers, the numbers must be of the same type `datum` specified in `upload_model` |
-| sign  | `Boolean`  | get signed response from the server or not (default `True`)                                |
 
+Returns a **`ModelResult`** object with the following fields:
 
-Returns a `UploadModelResponse` object with the follwing fields:
-
-| Param  | Type             | description                                                                           |
-| ------ | ---------------- | ------------------------------------------------------------------------------------- |
-| proof  | `ProofData`      | proof of the execution, contains the signature and the payload returned by the server |
-| output | `List(float)`    | the inference results returned by the server                                          |
+| field  | Type      | description                              |
+| ------ | --------- | ---------------------------------------- |
+| output | `[float]` | output returned by the model             |
+| ok     | `bool`    | True if the model is successfully upload |
+| msg    | `str`     | message from the server                  |
 
 Those exceptions can be raised in case or error:
 
 | exception type      | description                                                                                 |
 | ------------------- | ------------------------------------------------------------------------------------------- |
 | ConnectionError     | will be raised if the connection with the server fails.                                     |
-| CBOREncodeTypeError | will be raised if the data can't be serialized.                                             |
-| SignatureError      | will be raised when the signature or the returned digest is invalid                         |
+| FileNotFoundError   | will be raised if the policy file, or the certificate file is not found (in Hardware mode). |
+| CBOREncodeTypeError | Will be raised if the data can't be serialized.                                             |
 
 ### **close\_connection ( )**
-Close the connection between the client and the inference server.
 
+Close the connection between the client and the inference server.
