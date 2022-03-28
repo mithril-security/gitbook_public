@@ -54,6 +54,14 @@ Returns a `UploadModelResponse` object with the follwing fields:
 | ----- | ---------------- | ------------------------------------------------------------------------------------- |
 | proof | `ProofData`      | proof of the execution, contains the signature and the payload returned by the server |
 
+The `ProofData` object contains the following fields:
+
+| Param     | Type     | description                                                                           |
+| --------- | -------- | ------------------------------------------------------------------------------------- |
+| payload   | `bytes`  | the raw response data, returned by the server                                         |
+| signature | `bytes`  | the response signature, returned by the server                                        |
+
+
 Those exceptions can be raised in case or error:
 
 | exception type    | description                                                                                 |
@@ -66,10 +74,10 @@ Those exceptions can be raised in case or error:
 
 Send data to BlindAI server to perform the inference.
 
-| Param | Type       | description                                                                                |
-| ----- | ---------- | ------------------------------------------------------------------------------------------ |
-| data  | `[number]` | array of numbers, the numbers must be of the same type `datum` specified in `upload_model` |
-| sign  | `Boolean`  | get signed response from the server or not (default `True`)                                |
+| Param | Type           | description                                                                                |
+| ----- | -------------- | ------------------------------------------------------------------------------------------ |
+| data  | `List(number)` | list of numbers, the numbers must be of the same type `datum` specified in `upload_model`  |
+| sign  | `Boolean`      | get signed response from the server or not (default `True`)                                |
 
 
 Returns a `UploadModelResponse` object with the follwing fields:
@@ -78,6 +86,13 @@ Returns a `UploadModelResponse` object with the follwing fields:
 | ------ | ---------------- | ------------------------------------------------------------------------------------- |
 | proof  | `ProofData`      | proof of the execution, contains the signature and the payload returned by the server |
 | output | `List(float)`    | the inference results returned by the server                                          |
+
+The `ProofData` object contains the following fields:
+
+| Param     | Type     | description                                                                           |
+| --------- | -------- | ------------------------------------------------------------------------------------- |
+| payload   | `bytes`  | the raw response data, returned by the server                                         |
+| signature | `bytes`  | the response signature, returned by the server                                        |
 
 Those exceptions can be raised in case or error:
 
