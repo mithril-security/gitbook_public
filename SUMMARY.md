@@ -1,21 +1,33 @@
 # Table of contents
 
-* [BlindAI](README.md)
-  * [Architecture](archi.md)
-* [Get started](started.md)
-  * [Installation](installation.md)
-    * [Simulation server](simulation\_server.md)
-    * [Hardware server](hardware\_server.md)
-    * [Hardware server - Azure DCs v3](started/installation/hardware\_server-dcsv3.md)
-    * [Client side](client\_side.md)
-  * [Quick Start](started/quick\_start/README.md)
-    * [Software Mode](started/quick\_start/software-mode.md)
-    * [Hardware Mode](started/quick\_start/hardware-mode.md)
-    * [Hardware Mode (Azure DCs v3)](started/quick\_start/hardware-mode-dcsv3.md)
-* [Client API](client-interface.md)
-* [Examples](examples.md)
-* [Cloud deployment](cloud/README.md)
-  * [Azure DCsv2](cloud/azure-dcsv2.md)
-  * [Azure DCsv3](cloud/azure-dcsv3.md)
-* [Telemetry](telemetry.md)
+* [👋 Welcome](README.md)
+
+## 🚀 Getting started
+
+* [Quick start](getting-started/quick-start/README.md)
+  * [Prepare the model](getting-started/quick-start/prepare-the-model.md)
+  * [Send and Run the model](getting-started/quick-start/send-and-run-the-model.md)
+* [Cloud deployment](getting-started/cloud-deployment/README.md)
+  * [Azure DCsv2](getting-started/cloud-deployment/azure-dcsv2.md)
+  * [Azure DCsv3](getting-started/cloud-deployment/azure-dcsv3.md)
+* [Deploy on Hardware](getting-started/deploy-on-hardware.md)
+* [Telemetry](getting-started/telemetry.md)
+
+## 📚 Resources&#x20;
+
+* [Client API Reference](resources/client-api-reference/README.md)
+  * [latest: version 0.2.0](resources/client-api-reference/client-interface.md)
+  * [version 0.1.0](resources/client-api-reference/version-0.1.0.md)
+* [Examples](resources/examples.md)
+
+## 📈 Advanced
+
+* [Certificate and policy](advanced/certificate-and-policy.md)
+* [Setting up your dev environment](advanced/setting-up-your-dev-environment.md)
+* [Build the server from source](advanced/hardware\_server.md)
+* [Build the BlindAI Client SDK from source](advanced/client\_side.md)
+* [BlindAI Project Structure](advanced/blindai-project-structure.md)
+
+***
+
 * [Code Repository](https://github.com/mithril-security)
