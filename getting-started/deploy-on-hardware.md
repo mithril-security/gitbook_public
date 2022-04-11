@@ -68,5 +68,5 @@ docker run --rm mithrilsecuritysas/blindai-server:latest cat /root/tls/host_serv
 ```
 
 {% hint style="info" %}
-but please remember that this certificate is **not secure**, it is strongly recommended to [generate your own certificate](../advanced/certificate-and-policy.md#inject-your-own-tls-certificate-to-blindai))
+Please remember that this certificate is **not secure**, it is strongly recommended to [generate your own certificate](../advanced/certificate-and-policy.md#inject-your-own-tls-certificate-to-blindai).
 {% endhint %}
