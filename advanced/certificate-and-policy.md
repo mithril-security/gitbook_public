@@ -1,8 +1,14 @@
 # Certificate and policy
 
+### What are host\_server.pem and policy.toml?
+
+The `host_server.pem` file is the https certificate for the attestation server. This is used to securely communicate with the untrusted attestation server, which is used to get the SGX quote. In production, you should generate this certificate yourself and put it in inference server. To do this, read the next sections.
+
+The `policy.toml` file is used to specify which enclave should be accepted by the client. It basically contains the hash of the server binary, and the SGX flags the server should be run with. The client uses it to validate the quote sent by the server.
+
 ### Extract Policy and default TLS Certificate from the Hardware docker image
 
-You can extract the policy directly from the Docker Image using:
+You can extract the policy directly from the prebuilt Docker Image using:
 
 {% tabs %}
 {% tab title="Hardware" %}
@@ -18,7 +24,7 @@ docker run --rm mithrilsecuritysas/blindai-server-dcsv3:latest /bin/cat /root/po
 {% endtab %}
 {% endtabs %}
 
-You can also extract the default TLS certificate like this:&#x20;
+You can also extract the default TLS certificate like this:
 
 {% tabs %}
 {% tab title="Hardware" %}
@@ -45,7 +51,7 @@ mkdir tls
 openssl req -newkey rsa:2048 -nodes -keyout tls/host_server.key -out tls/host_server.pem -x509 -days 365
 ```
 
-Once you generated your TLS certificate, you can use it with the project:
+Once you have generated your TLS certificate, you can use it with the project using a docker volume:
 
 {% tabs %}
 {% tab title="Hardware" %}

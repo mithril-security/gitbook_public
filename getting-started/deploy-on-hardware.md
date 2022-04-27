@@ -53,9 +53,9 @@ docker run -it \
 
 ### Get the policy and TLS Certificate
 
-In hardware mode, we are required to pass two files that were generated previously by the server to the client: `policy.toml` and `host_server.pem`.
+In hardware mode, we are required to pass two files that were generated previously by the server to the client: `policy.toml` and `host_server.pem`. Read more about what these files are used for here: [certificate-and-policy.md](../advanced/certificate-and-policy.md "mention")
 
-You may pull the policy with this command when the server is running:
+You may pull the policy for the latest prebuilt server binary with this command:
 
 ```
 docker run --rm mithrilsecuritysas/blindai-server:latest cat /root/policy.toml > policy.pem
