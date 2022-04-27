@@ -27,7 +27,7 @@ docker create -it \
   --name blindai-dev-env \
   -p 50051:50051 \
   -p 50052:50052 \
-  --volume $(pwd):/blindai \
+  --volume $(pwd):/root/blindai \
   blindai-dev-env \
   /bin/bash
 ```
@@ -36,7 +36,7 @@ You can then use Visual Studio Code to directly work in that container using the
 
 ![](../.gitbook/assets/Screenshot\_20220408\_131048.png)
 
-Then open the `/blindai` folder, and you're good to go!
+Then open the `/root/blindai` folder, and you're good to go!
 
 ![](../.gitbook/assets/Screenshot\_20220408\_131940.png)
 
