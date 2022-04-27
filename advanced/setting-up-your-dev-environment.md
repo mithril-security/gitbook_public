@@ -50,10 +50,10 @@ You probably also want to install the Rust Analyzer extension in the docker cont
 
 If you don't want to use docker, you will need to install the following:
 
-* Intel SGX OOT 2.11.0 Driver or DCAP 1.36.2 Driver
-* Intel SGX SDK v2.12
-* Intel SGX PSW
-* Rust nightly-2020-10-25 with Xargo
+* Intel SGX DCAP **1.41** Driver
+* Intel SGX SDK v2.15.1
+* Intel SGX PSW (version 2.15.101.1 for the PSW librairies and 1.12.101.1 for the PSW-DCAP librairies)
+* Rust nightly-2021-11-01 with Xargo
 
 You can find the [installation guides](https://download.01.org/intel-sgx/sgx-linux/2.9/docs/) for Intel SGX software on the 01.org website.
 
