@@ -64,7 +64,7 @@ To start this docker image:
 {% tabs %}
 {% tab title="Simulation" %}
 ```bash
-docker run \
+docker run -it \
     -p 50051:50051 \
     -p 50052:50052 \
     mithrilsecuritysas/blindai-server-sim:latest
@@ -75,7 +75,7 @@ docker run \
 Make sure you have the correct hardware and drivers (see [#hardware-requirements](../getting-started/deploy-on-hardware.md#hardware-requirements "mention")), and run:
 
 ```bash
-docker run \
+docker run -it \
     -p 50051:50051 \
     -p 50052:50052 \
     --device /dev/sgx/enclave \
@@ -94,7 +94,7 @@ This will launch the enclave in non debug-mode. If you wish to launch in debug m
 
 {% tab title="Azure DCs v3" %}
 ```bash
-docker run \
+docker run -it \
     -p 50051:50051 \
     -p 50052:50052 \
     --device /dev/sgx/enclave \
