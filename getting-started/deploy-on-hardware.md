@@ -58,7 +58,7 @@ In hardware mode, we are required to pass two files that were generated previous
 You may pull the policy for the latest prebuilt server binary with this command:
 
 ```
-docker run --rm mithrilsecuritysas/blindai-server:latest cat /root/policy.toml > policy.pem
+docker run --rm mithrilsecuritysas/blindai-server:latest cat /root/policy.toml > policy.toml
 ```
 
 If you wish to use the default built-in TLS certificate, you need to pull the certificate first as well.
