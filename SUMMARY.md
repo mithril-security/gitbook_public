@@ -17,7 +17,8 @@
 ## 📚 Resources&#x20;
 
 * [Client API Reference](resources/client-api-reference/README.md)
-  * [latest: version 0.2.0](resources/client-api-reference/client-interface.md)
+  * [latest: version 0.3.0](resources/client-api-reference/client-interface.md)
+  * [version 0.2.0](resources/client-api-reference/client-interface-1.md)
   * [version 0.1.0](resources/client-api-reference/version-0.1.0.md)
 * [Examples](resources/examples.md)
 

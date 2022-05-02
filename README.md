@@ -19,8 +19,8 @@ Our solution comes in two parts:
 
 ### Latest versions
 
-* **BlindAI server:** _0.2.2_
-* **BlindAI client:** _0.2.0_
+* **BlindAI server:** _0.3.0_
+* **BlindAI client:** _0.3.0_
 
 ### Features
 
