@@ -42,7 +42,7 @@ The function won't return anything if the connection was successful. In case of 
 | VersionError      | Will be raised if the version of the server is not supported by the client.                                             |
 | FileNotFoundError | Will be raised if the policy file, or the certificate file is not found (in Hardware mode).                             |
 
-### **upload\_model (model, shape, dtype, dtype\_out, sign) -> SimpleReply**
+### **upload\_model (model, shape, dtype, dtype\_out, sign) ->** UploadModelResponse
 
 Upload an inference model to the server.&#x20;
 
@@ -79,7 +79,7 @@ Those exceptions can be raised in case or error:
 | FileNotFoundError | Will be raised if the model file is not found.       |
 | SignatureError    | Will be raised if the response signature is invalid. |
 
-### **run\_model (data) -> ModelResult**
+### **run\_model (data) -> RunModelResponse**
 
 Send data to the server to make a secure inference.
 
