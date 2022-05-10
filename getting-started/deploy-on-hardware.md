@@ -2,7 +2,9 @@
 
 ## Hardware requirements
 
-You will need to have an Intel SGX ready device (with `SGX+FLC` support). Please make sure to have the `SGX+FLC` drivers (preferably with the version **1.41**) installed on your system before running the docker image. [Please check this link to get more information about the drivers](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux).
+You will need to have an Intel SGX ready device, with `SGX+FLC` (Flexible Launch Control) support. Read [this Intel documentation page](https://www.intel.com/content/www/us/en/support/articles/000057420/software/intel-security-products.html) to see if your Intel processor supports it.
+
+Please make sure to have the `SGX+FLC` drivers (preferably with the version **1.41**) installed on your system before running the docker image. [Check this link to get more information about the drivers](https://github.com/intel/SGXDataCenterAttestationPrimitives/tree/master/driver/linux).
 
 If you are using an Azure DCXS VM, the drivers are already installed.
 
