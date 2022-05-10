@@ -6,6 +6,14 @@ You will need to have an Intel SGX ready device (with `SGX+FLC` support). Please
 
 If you are using an Azure DCXS VM, the drivers are already installed.
 
+{% hint style="success" %}
+If the drivers are named "enclave" and "provision" (or sgx\_enclave and provision), you are good to go!
+{% endhint %}
+
+{% hint style="warning" %}
+If the drivers are named "isgx", that means your system is not supported. This driver is for the first generation of SGX, which lacks security features we rely on.
+{% endhint %}
+
 Otherwise, here is a way to install the drivers quickly:
 
 ```
