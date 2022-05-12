@@ -7,7 +7,7 @@
 * [Quick start](getting-started/quick-start/README.md)
   * [Run the BlindAI server](getting-started/quick-start/run-the-blindai-server.md)
   * [Prepare the model](getting-started/quick-start/prepare-the-model.md)
-  * [Send and Run the model](getting-started/quick-start/send-and-run-the-model.md)
+  * [Send and run the model](getting-started/quick-start/send-and-run-the-model.md)
 * [Cloud deployment](getting-started/cloud-deployment/README.md)
   * [Azure DCsv2](getting-started/cloud-deployment/azure-dcsv2.md)
   * [Azure DCsv3](getting-started/cloud-deployment/azure-dcsv3.md)
