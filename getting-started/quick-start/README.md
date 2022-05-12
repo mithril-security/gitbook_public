@@ -6,7 +6,7 @@ description: Let's get started with how to use BlindAI to deploy an AI model in 
 
 This section guides you through deploying your first model with **BlindAI Inference Server!**&#x20;
 
-We **** will use the example of [DistilBert](https://huggingface.co/docs/transformers/model\_doc/distilbert) model **** for demonstration purposes. We will go through two main phases:&#x20;
+We **** will use the example of [DistilBert](https://huggingface.co/docs/transformers/model\_doc/distilbert) model **** for demonstration purposes. We will go through three main phases:&#x20;
 
 ### **1. Run the BlindAI Server**
 
