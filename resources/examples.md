@@ -1,15 +1,11 @@
 # Examples
 
-### Confidential medical image analysis with COVID-Net and BlindAI
+Here is a list of models BlindAI supports, the use cases it unlocks and articles to provide more context on each case. The articles are in preparation and we welcome all contributions to show how BlindAI can be used to deploy AI models with confidentiality!
 
-Deploy medical image analysis with confidentiality thanks to BlindAI
 
-{% embed url="https://blog.mithrilsecurity.io/confidential-covidnet-with-blindai" %}
-Blog post
-{% endembed %}
 
-### Deploy Transformers models with confidentiality
-
-Learn how to deploy Transformers models, with privacy guarantees thanks to Confidential Computing!
-
-{% embed url="https://blog.mithrilsecurity.io/transformers-with-confidentiality" %}
+| Model name      | Model family | Link to model                                                                                                                    | Article                                                                                                                               | Link to the notebook                                                                                                                                                                                         |
+| --------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| DistilBERT      | BERT         | [https://huggingface.co/docs/transformers/model\_doc/distilbert](https://huggingface.co/docs/transformers/model\_doc/distilbert) | [Deploy Transformers models with confidentiality](https://blog.mithrilsecurity.io/transformers-with-confidentiality/)                 | [https://github.com/mithril-security/blindai/blob/master/examples/distilbert/BlindAI-DistilBERT.ipynb](https://github.com/mithril-security/blindai/blob/master/examples/distilbert/BlindAI-DistilBERT.ipynb) |
+| COVID-Net-CXR-2 | 2D CNN       | [https://github.com/lindawangg/COVID-Net](https://github.com/lindawangg/COVID-Net)                                               | [Confidential medical image analysis with COVID-Net and BlindAI](https://blog.mithrilsecurity.io/confidential-covidnet-with-blindai/) | [https://github.com/mithril-security/blindai/blob/master/examples/covidnet/BlindAI-COVID-Net.ipynb](https://github.com/mithril-security/blindai/blob/master/examples/covidnet/BlindAI-COVID-Net.ipynb)       |
+| Wav2vec2        | Wav2vec      | [https://huggingface.co/docs/transformers/model\_doc/wav2vec2](https://huggingface.co/docs/transformers/model\_doc/wav2vec2)     | To be announced                                                                                                                       | [https://github.com/mithril-security/blindai/blob/master/examples/wav2vec2/BlindAI-Wav2vec2.ipynb](https://github.com/mithril-security/blindai/blob/master/examples/wav2vec2/BlindAI-Wav2vec2.ipynb)         |
