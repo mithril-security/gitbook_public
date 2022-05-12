@@ -22,7 +22,7 @@ Loading and exporting the model in ONNX format.&#x20;
 [prepare-the-model.md](prepare-the-model.md)
 {% endcontent-ref %}
 
-### **3. Send and Run the model** &#x20;
+### **3. Send and run the model** &#x20;
 
 Sending the model in BlindAI Server and running the inference.
 
