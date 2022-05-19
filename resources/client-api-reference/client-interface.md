@@ -17,7 +17,7 @@ An enumeration of the acceptable input data types. Used to specify the type of t
 | U32    | unsigned32 |
 | U64    | unsigned64 |
 
-### **connect\_server (addr, server\_name, certificate, policy, simulation, )**
+### **connect\_server (addr, server\_name, certificate, policy, simulation,** untrusted\_port, attested\_port**)**
 
 Connect to the server with the specified parameters. You will have to specify here the expected policy (server identity, configuration...) and the server TLS certificate, if you are using the hardware mode.
 
@@ -79,7 +79,7 @@ Those exceptions can be raised in case or error:
 | FileNotFoundError | Will be raised if the model file is not found.       |
 | SignatureError    | Will be raised if the response signature is invalid. |
 
-### **run\_model (data) -> RunModelResponse**
+### **run\_model (data, sign) -> RunModelResponse**
 
 Send data to the server to make a secure inference.
 
