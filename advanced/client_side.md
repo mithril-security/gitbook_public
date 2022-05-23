@@ -9,7 +9,7 @@
 Before proceeding to build the client, make sure the following requirements are installed in your environment.&#x20;
 
 {% tabs %}
-{% tab title="Linux" %}
+{% tab title="Linux and Mac OS" %}
 * CMake >= 3.12
 * Make >= 4.0
 * g++ >= 7.1
@@ -44,7 +44,7 @@ git submodule update
 #### Create and activate a virtual environment
 
 {% tabs %}
-{% tab title="Linux" %}
+{% tab title="Linux and Mac OS" %}
 ```bash
 python3 -m venv env
 source env/bin/activate
