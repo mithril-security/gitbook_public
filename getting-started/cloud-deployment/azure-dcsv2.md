@@ -42,7 +42,7 @@ Once you are done with this, we have to **open the ports used by BlindAI.** You 
 
 ### 3 - Using the VM
 
-You can now start the VM. In order to have a good experience with SSH, we recommand you to download [**Visual Studio Code**](https://code.visualstudio.com) and get the extension [**Remote - SSH**](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
+You can now start the VM. In order to have a good experience with SSH, we recommand you to download [**Visual Studio Code**](https://code.visualstudio.com/) and get the extension [**Remote - SSH**](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
 
 Setting up a SSH connection is fairly easy in Visual Studio Code. All you need to do is add a SSH Host (you can find this option in **the Command Palette**):&#x20;
 

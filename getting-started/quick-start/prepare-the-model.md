@@ -2,7 +2,7 @@
 
 Let's assume we want to deploy a [**DistilBERT**](https://huggingface.co/docs/transformers/model\_doc/distilbert) model for classification, within our confidential inference server. This could be useful for instance to analyze medical records in a privacy-friendly manner and compliant way.
 
-BlindAI uses the [ONNX format](https://onnx.ai), which is an open and interoperable AI model format. Pytorch or Tensorflow models can be easily exported to ONNX.
+BlindAI uses the [ONNX format](https://onnx.ai/), which is an open and interoperable AI model format. Pytorch or Tensorflow models can be easily exported to ONNX.
 
 ## Step 1: Load the BERT model
 

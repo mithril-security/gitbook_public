@@ -2,7 +2,7 @@
 description: Technical documentation of the client.
 ---
 
-# latest: version 0.3.0
+# latest: version 0.3.1
 
 ### **ModelDatumType**
 
