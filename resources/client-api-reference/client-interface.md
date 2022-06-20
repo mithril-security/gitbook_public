@@ -64,12 +64,12 @@ The provided model needs to be in the Onnx format.
 
 **NB:** BlindAI ensures backward compatibility by maintaining the interface for single input models. Developers need not change their single model _upload_model_ and _run_model_ to suite the multiple input feature.  
 
-| Param          | Type                                          | description                                                                    |
-| -------------- | --------------------------------------------- | ------------------------------------------------------------------------------ |
-| model          | `str`                                         | Path to Onnx model file.                                                       |
-| tensor_inputs  | `List[[int[], ModelDatumType]]`                | The list describing multiple inputs of the model                               |
-| tensor_outputs | `List[ModelDatumType]` | A list describing multiple inputs of the model. Defaults to ModelDatumType.F32 |
-| sign           | `bool,optional`                               | Get signed responses from the server or not. Defaults to `False`.              |
+| Param          | Type                            | description                                                                                                                    |
+| -------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| model          | `str`                           | Path to Onnx model file.                                                                                                       |
+| tensor_inputs  | `List[[int[], ModelDatumType]]` | The list of input fact and datum types for each input grouped together in lists, describing the different inputs of the model. |
+| tensor_outputs | `List[ModelDatumType]`          | The list of datum types describing the different output types of the model. Defaults to ModelDatumType.F32                     |
+| sign           | `bool,optional`                 | Get signed responses from the server or not. Defaults to `False`.                                                              |
 
 Returns a `UploadModelResponse` object with the following fields (only if `sign` was set to `true`):
 
@@ -114,10 +114,10 @@ The data provided must be in a list, as the tensor will be rebuilt inside the se
 
 **NB:** BlindAI ensures backward compatibility by maintaining the interface for single input models. Developers need not change their single model _upload_model_ and _run_model_ to suite the multiple input feature. 
 
-| Param | Type                               | description                                                                                                                                                            |
-| ----- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| data  | `List[Any[]]` | The input data. It must be an array of numbers or an array of arrays of numbers, capturing the multiple inputs case, of the same type dtype specified in `upload_model`. |
-| sign  | `bool, optional`                   | Get signed responses from the server or not. Defaults to False.                                                                                                        |
+| Param | Type             | description                                                                                                                                          |
+| ----- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| data  | `List[Any[]]`    | The input data. It must be an array of arrays of numbers, capturing a model with multiple inputs of the same type dtype specified in `upload_model`. |
+| sign  | `bool, optional` | Get signed responses from the server or not. Defaults to False.                                                                                      |
 
 
 Returns a **`RunModelResponse` ** object with the following fields:
