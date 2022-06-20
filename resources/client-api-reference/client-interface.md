@@ -62,11 +62,13 @@ Upload an inference model with multiple inputs to the server.&#x20;
 
 The provided model needs to be in the Onnx format.
 
+**NB:** BlindAI ensures backward compatibility by maintaining the interface for single input models. Developers need not change their single model _upload_model_ and _run_model_ to suite the multiple input feature.  
+
 | Param          | Type                                          | description                                                                    |
 | -------------- | --------------------------------------------- | ------------------------------------------------------------------------------ |
 | model          | `str`                                         | Path to Onnx model file.                                                       |
-| tensor_inputs  | `Union[List[Any], List[List]]`                | The list describing multiple inputs of the model                               |
-| tensor_outputs | `Union[ModelDatumType, List[ModelDatumType]]` | A list describing multiple inputs of the model. Defaults to ModelDatumType.F32 |
+| tensor_inputs  | `List[[int[], ModelDatumType]]`                | The list describing multiple inputs of the model                               |
+| tensor_outputs | `List[ModelDatumType]` | A list describing multiple inputs of the model. Defaults to ModelDatumType.F32 |
 | sign           | `bool,optional`                               | Get signed responses from the server or not. Defaults to `False`.              |
 
 Returns a `UploadModelResponse` object with the following fields (only if `sign` was set to `true`):
@@ -110,9 +112,11 @@ Send data to the server to make a secure inference.
 
 The data provided must be in a list, as the tensor will be rebuilt inside the server.
 
+**NB:** BlindAI ensures backward compatibility by maintaining the interface for single input models. Developers need not change their single model _upload_model_ and _run_model_ to suite the multiple input feature. 
+
 | Param | Type                               | description                                                                                                                                                            |
 | ----- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| data  | `Union[List[Any],List[List[Any]]]` | The input data. It must be an array of numbers or an array of arrays of numbers, capturing the multiple inputs case, of the same type dtype specified in `upload_model`. |
+| data  | `List[Any[]]` | The input data. It must be an array of numbers or an array of arrays of numbers, capturing the multiple inputs case, of the same type dtype specified in `upload_model`. |
 | sign  | `bool, optional`                   | Get signed responses from the server or not. Defaults to False.                                                                                                        |
 
 
