@@ -14,11 +14,10 @@
 * [Deploy on Hardware](getting-started/deploy-on-hardware.md)
 * [Telemetry](getting-started/telemetry.md)
 
-## 📚 Resources&#x20;
+## 📚 Resources
 
 * [Client API Reference](resources/client-api-reference/README.md)
-  * [latest: version 0.4.0-test](resources/client-api-reference/client-interface-0.4.0-test.md)
-  * [version 0.3.1](resources/client-api-reference/client-interface.md)
+  * [latest - version 0.3.1](resources/client-api-reference/client-interface.md)
   * [version 0.3.0](<resources/client-api-reference/client-interface (1).md>)
   * [version 0.2.0](resources/client-api-reference/client-interface-1.md)
   * [version 0.1.0](resources/client-api-reference/version-0.1.0.md)
