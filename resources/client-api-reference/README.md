@@ -1,5 +1,9 @@
 # Client API Reference
 
+{% content-ref url="client-interface-0.4.0-test.md" %}
+[client-interface-0.4.0-test.md](client-interface-0.4.0-test.md)
+{% endcontent-ref %}
+
 {% content-ref url="client-interface.md" %}
 [client-interface.md](client-interface.md)
 {% endcontent-ref %}
