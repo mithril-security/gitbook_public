@@ -8,7 +8,13 @@ description: >-
 
 ## Using remote container extension on vs-code 🐳
 
-Clone the repo and open it in vs-code. If you do not have the remote container extension, vs-code should prompt you to install it. Then open the green menu at the bottom-left of the vs-code window and choose: "Open folder in container". It will build for you the image described in [this Dockerfile](https://github.com/mithril-security/blindai/blob/master/server/docker/build.dockerfile) with the dev-env target. It installs Ubuntu18-04 and all the dependencies and drivers the project needs as well as the Rust analyzer, python-intellisense and jupyter-notebook vs-code extensions.
+Clone the repo and open it in vs-code. If you do not have the remote container extension, vs-code should prompt you to install it. 
+
+Open the green menu at the bottom-left of the vs-code 
+
+![](../.gitbook/assets/Screenshot-vscode.png)
+
+Choose: "Open folder in container". It will build for you the image described in [this Dockerfile](https://github.com/mithril-security/blindai/blob/master/server/docker/build.dockerfile) with the dev-env target. It installs Ubuntu18-04 and all the dependencies and drivers the project needs as well as the Rust analyzer, python-intellisense and jupyter-notebook vs-code extensions.
 
 To get started on the project you should create a python virtual environment like this :
 ```
