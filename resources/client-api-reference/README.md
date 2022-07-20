@@ -1,9 +1,5 @@
 # Client API Reference
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
 {% content-ref url="client-interface.md" %}
 [client-interface.md](client-interface.md)
 {% endcontent-ref %}
